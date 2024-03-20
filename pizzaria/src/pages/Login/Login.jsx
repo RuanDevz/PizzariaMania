@@ -1,18 +1,43 @@
-// eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react';
 import { ContainerLogin } from './LoginStyle';
 import Input from '../../components/Inputs/Input';
 import Button from '../../components/button/Button';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 const Login = () => {
-  const [login, setLogin] = useState("");
-  const [password, setPassword] = useState("");
+  const [login, setLogin] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch('http://localhost:3000/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ login, password }),
+      });
+
+      if (response.ok) {
+        // Se o login for bem-sucedido, redirecione o usuário para outra página
+        // Aqui você pode redirecionar para a página de perfil, por exemplo
+        window.location.href = '/profile';
+      } else {
+        const errorData = await response.json();
+        alert(errorData.error || 'Erro desconhecido ao fazer login');
+      }
+    } catch (error) {
+      console.error('Erro ao fazer login:', error);
+      alert('Erro ao fazer login. Tente novamente mais tarde.');
+    }
+  };
 
   return (
     <ContainerLogin>
       <h1>Login</h1>
-      <form action="">
+      <form onSubmit={handleLogin}>
         <Input
           type="text"
           placeholder="Email"
@@ -21,7 +46,7 @@ const Login = () => {
           htmlFor="login"
           id="login"
         />
-          <Input
+        <Input
           type="password"
           placeholder="Senha"
           value={password}
@@ -29,10 +54,12 @@ const Login = () => {
           htmlFor="password"
           id="password"
         />
+        <Button childreen='Entrar' type="submit"></Button>
       </form>
-      <div className='Join'>
-         <Button childreen='Entrar' />
-         <Link to='/register' className='register'>Não possui uma conta ?</Link>
+      <div className="Join">
+        <Link to="/register" className="register">
+          Não possui uma conta ?
+        </Link>
       </div>
     </ContainerLogin>
   );

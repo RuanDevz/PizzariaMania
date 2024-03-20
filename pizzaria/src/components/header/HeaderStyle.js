@@ -40,4 +40,9 @@ border-bottom: grey 1px solid;
     margin: 40px 0px;
     font-weight: 600;
 }
+
+a{
+    text-decoration: none;
+    color: #ff5b00;
+}
 `

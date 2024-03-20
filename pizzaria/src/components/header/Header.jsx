@@ -3,6 +3,7 @@ import { ContainerHeader } from './HeaderStyle';
 import logo from '../../assets/logo.png';
 import { LuMenu } from 'react-icons/lu';
 import { IoMdClose } from 'react-icons/io';
+import {Link} from 'react-router-dom'
 
 const Header = () => {
   const [menuactive, setMenuactive] = useState(false);
@@ -15,7 +16,7 @@ const Header = () => {
     <ContainerHeader>
       <div className='logo'>
         <img src={logo} alt='logo' />
-        <h1>Mania</h1>
+        <Link to='/'><h1>Mania</h1></Link>
       </div>
       <div className='menu'>
         {menuactive ? (
