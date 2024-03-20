@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-import './Register.js'
-import { RegisterContainer } from './Register.js'
+import { RegisterContainer } from './RegisterStyle.js'
 import Input from '../../components/Inputs/Input.jsx'
 import Button from '../../components/button/Button.jsx'
 
