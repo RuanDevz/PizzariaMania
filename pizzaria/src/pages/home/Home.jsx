@@ -1,12 +1,19 @@
 // eslint-disable-next-line no-unused-vars
-import React from 'react'
+import React, { useEffect } from 'react'
 import { ContainerHome } from './HomeStyle'
 import pizzaiolo from '../../assets/pizzaiolo.png'
 import Button from '../../components/button/Button'
 import {Link} from 'react-router-dom'
+import axios from 'axios'
 
 
 const Home = () => {
+
+  useEffect(() =>{
+    axios.get("http://localhost:3000/skills")
+    .then(resp => console.log(resp))
+    .catch(err => console.log(err))
+  },[])
   return (
     <ContainerHome>
         <div>
