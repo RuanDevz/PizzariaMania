@@ -11,7 +11,7 @@ router.get('/', async (req,res) =>{
 router.post('/', async (req,res) =>{
     const PostRegister = req.body
     await Registers.create(PostRegister)
-    res.json(PostRegister)
+    res.status(200).json(PostRegister)
 })
 
 router.put("/:id", async (req,res) =>{

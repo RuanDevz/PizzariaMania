@@ -1,25 +1,47 @@
-// eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react';
 import { ContainerLogin } from './LoginStyle';
 import Input from '../../components/Inputs/Input';
 import Button from '../../components/button/Button';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom'; // Importe useNavigate
+import axios from 'axios';
 
 const Login = () => {
-  const [login, setLogin] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const navigate = useNavigate(); // Use useNavigate para acessar a função de navegação
 
- 
+  const LoginSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.post('http://localhost:3001/register', {
+        email: email,
+        password: password,
+      });
+
+      if (response.data.success) {
+       
+        navigate('/dashboard'); 
+      } else {
+
+        setError('Credenciais inválidas. Verifique seu email e senha.');
+      }
+    } catch (error) {
+      console.log(error)
+      setError('Erro ao realizar o login. Tente novamente mais tarde.');
+    }
+  };
 
   return (
     <ContainerLogin>
       <h1>Login</h1>
-      <form>
+      <form onSubmit={LoginSubmit}>
         <Input
           type="text"
           placeholder="Email"
-          value={login}
-          onChange={(e) => setLogin(e.target.value)}
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
           htmlFor="login"
           id="login"
         />
@@ -31,11 +53,12 @@ const Login = () => {
           htmlFor="password"
           id="password"
         />
+        {error && <p id='error'>{error}</p>}
         <Button childreen='Entrar' type="submit"></Button>
       </form>
       <div className="Join">
         <Link to="/register" className="register">
-          Não possui uma conta ?
+          Não possui uma conta?
         </Link>
       </div>
     </ContainerLogin>

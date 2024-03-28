@@ -1,4 +1,5 @@
-import styled from "styled-components";
+
+import styled from 'styled-components';
 
 export const RegisterContainer = styled.div`
     display: flex;
@@ -12,7 +13,6 @@ export const RegisterContainer = styled.div`
         color: #ff5b00;
         padding-top: 40px;
     }
-
     form {
         display: flex;
         justify-content: center;
@@ -29,3 +29,30 @@ export const RegisterContainer = styled.div`
         }
     }
 `;
+
+export const SucessMessage = styled.div`
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 20px;
+        width: 300px;
+        height: 10px;
+        border-radius: 20px;
+        align-items: center;
+        background-color: white;
+        box-shadow: -webkit-box-shadow: -2px 2px 17px 0px rgba(0,0,0,0.75);
+        -moz-box-shadow: -2px 2px 17px 0px rgba(0,0,0,0.75);
+        box-shadow: -2px 2px 17px 0px rgba(0,0,0,0.75);;
+        padding: 100px 100px;
+
+        h2{
+            font-size: 1.05em;
+            text-align: center;
+            white-space: nowrap;
+            color: #ff5b00;
+        }
+
+        img{
+            width: 60px;
+        }
+`
