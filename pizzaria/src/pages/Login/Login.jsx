@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react';
 import { ContainerLogin } from './LoginStyle';
 import Input from '../../components/Inputs/Input';
@@ -8,36 +9,12 @@ const Login = () => {
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
-
-    try {
-      const response = await fetch('http://localhost:3000/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ login, password }),
-      });
-
-      if (response.ok) {
-        // Se o login for bem-sucedido, redirecione o usuário para outra página
-        // Aqui você pode redirecionar para a página de perfil, por exemplo
-        window.location.href = '/profile';
-      } else {
-        const errorData = await response.json();
-        alert(errorData.error || 'Erro desconhecido ao fazer login');
-      }
-    } catch (error) {
-      console.error('Erro ao fazer login:', error);
-      alert('Erro ao fazer login. Tente novamente mais tarde.');
-    }
-  };
+ 
 
   return (
     <ContainerLogin>
       <h1>Login</h1>
-      <form onSubmit={handleLogin}>
+      <form>
         <Input
           type="text"
           placeholder="Email"
