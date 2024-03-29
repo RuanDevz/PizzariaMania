@@ -2,46 +2,64 @@ import React, { useState } from 'react';
 import { ContainerLogin } from './LoginStyle';
 import Input from '../../components/Inputs/Input';
 import Button from '../../components/button/Button';
-import { Link, useNavigate } from 'react-router-dom'; // Importe useNavigate
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const Login = () => {
-  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const navigate = useNavigate(); // Use useNavigate para acessar a função de navegação
+  const [responseData, setResponseData] = useState(null);
+  const navigate = useNavigate();
 
-  const LoginSubmit = async (e) => {
-    e.preventDefault();
+  const handleLoginSubmit = (e) => {
+    let isValid = true;
 
-    try {
-      const response = await axios.post('http://localhost:3001/register', {
-        email: email,
-        password: password,
-      });
-
-      if (response.data.success) {
-       
-        navigate('/dashboard'); 
-      } else {
-
-        setError('Credenciais inválidas. Verifique seu email e senha.');
-      }
-    } catch (error) {
-      console.log(error)
-      setError('Erro ao realizar o login. Tente novamente mais tarde.');
+    if (username.length === 0 || password.length === 0) {
+      setError('Preencha os campos corretamente');
+      isValid = false;
+      return; 
     }
+
+    if (username.length === 0) {
+      setError('Digite o nome do seu usuário');
+      isValid = false;
+      return; 
+    }
+
+    if (password.length === 0) {
+      setError('Digite sua senha');
+      isValid = false;
+      return; 
+    }
+
+    if (!isValid) {
+      return;
+    }
+
+    e.preventDefault();
+    const data = { Username: username, Password: password };
+    axios
+      .post('http://localhost:3001/user/login', data).then((response) => {
+        setResponseData(response.data);
+        console.log(response.data);
+        navigate('/dashboard');
+      })
+      .catch((error) => {
+        setError('Falha ao logar, por favor, verifique suas credenciais');
+        console.error('Login error:', error);
+      });
   };
 
   return (
     <ContainerLogin>
       <h1>Login</h1>
-      <form onSubmit={LoginSubmit}>
+      <form onSubmit={handleLoginSubmit}>
         <Input
           type="text"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          placeholder="Username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
           htmlFor="login"
           id="login"
         />
@@ -53,8 +71,8 @@ const Login = () => {
           htmlFor="password"
           id="password"
         />
-        {error && <p id='error'>{error}</p>}
-        <Button childreen='Entrar' type="submit"></Button>
+        {error && <p id="error">{error}</p>}
+        <Button childreen="Entrar" type="submit"></Button>
       </form>
       <div className="Join">
         <Link to="/register" className="register">

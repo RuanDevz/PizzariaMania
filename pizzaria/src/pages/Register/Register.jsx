@@ -1,120 +1,110 @@
-import React, { useEffect, useState } from 'react'
-import { RegisterContainer,SucessMessage } from './RegisterStyle.js'
-import Input from '../../components/Inputs/Input.jsx'
-import Button from '../../components/button/Button.jsx'
-import Correto from '../../assets/Correto.png'
-import {useNavigate} from 'react-router-dom'
-import axios from 'axios'
+import React, { useEffect, useState } from 'react';
+import { RegisterContainer, SucessMessage } from './RegisterStyle.js';
+import Input from '../../components/Inputs/Input.jsx';
+import Button from '../../components/button/Button.jsx';
+import Correto from '../../assets/Correto.png';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const Register = () => {
-    const [name, setName] = useState('');
-    const [sobrenome, setSobrenome] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setpassword] = useState('');
-    const [confirmpassword, setConfirmpassword] = useState('');
-    const [error, setError] = useState(false);
-    const [telefone, setTelefone] = useState('');
-    const [isRegistred, setIsregistred] = useState(false);
-    const navigate = useNavigate();
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [error, setError] = useState('');
+  const [isRegistered, setIsRegistered] = useState(false);
+  const navigate = useNavigate();
 
-    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    const telefoneCelularRegex = /^(\+[0-9]{1,3})?([0-9]{2,3})?[0-9]{8,}$/;
-    useEffect(() => {
-        if (isRegistred) {
-            const timeout = setTimeout(() => {
-                setIsregistred(false);
-                navigate('/login');
-            }, 3000);
-            return () => clearTimeout(timeout);
-        }
-    }, [isRegistred, navigate]);
+  useEffect(() => {
+    if (isRegistered) {
+      const timeout = setTimeout(() => {
+        setIsRegistered(false);
+        navigate('/login');
+      }, 3000);
+      return () => clearTimeout(timeout);
+    }
+  }, [isRegistered, navigate]);
 
-    const HandleClick = () => {
-        let isValid = true;
+  const handleClick = () => {
+    let isValid = true;
 
-        if (name.length === 0 && sobrenome.length === 0 && email.length === 0 && password.length === 0 && confirmpassword.length === 0) {
-            setError('Preencha as informações');
-            return;
-        }
+    if (username.length < 4) {
+      setError('Seu nome precisa ter pelo menos 4 caracteres');
+      isValid = false;
+      return
+    }
 
-        if (name.length < 4) {
-            setError('Seu nome precisa ter mais de 4 Caracteres');
-            isValid = false;
-            return;
-        }
+    if (password.length <= 8) {
+      setError('Sua senha precisa ter mais de 8 caracteres');
+      isValid = false;
+      return
+    }
 
-        if (sobrenome.length < 4) {
-            setError('Seu sobrenome precisa ter mais que 4 caracteres');
-            isValid = false;
-            return;
-        }
+    if (password !== confirmPassword) {
+      setError('As senhas não coincidem');
+      isValid = false;
+      return
+    }
 
-        if (!telefoneCelularRegex.test(telefone)) {
-            setError('Insira um telefone válido');
-            isValid = false;
-            return;
-        }
+    if (!isValid) {
+      return; 
+    }
 
-        if (!emailRegex.test(email)) {
-            setError('Insira um email válido');
-            isValid = false;
-            return;
-        }
+    axios
+      .post('http://localhost:3001/user', {
+        Username: username,
+        Password: password,
+      })
+      .then((response) => {
+        setIsRegistered(true);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.error('Erro ao cadastrar usuário:', error);
+      });
+  };
 
-        if (password.length <= 8) {
-            setError('Sua senha precisa ter mais de 8 caracteres');
-            isValid = false;
-            return;
-        }
+  return (
+    <RegisterContainer>
+      <h1>Cadastrar usuário</h1>
+      {isRegistered ? (
+        <SucessMessage id='success'>
+          <h2>Usuário Cadastrado com Sucesso</h2>
+          <img src={Correto} alt='Correto' />
+        </SucessMessage>
+      ) : (
+        <form>
+          <Input
+            type='text'
+            placeholder='Nome'
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            htmlFor='username'
+            id='username'
+          />
 
-        if (password !== confirmpassword) {
-            setError('As senhas não coincidem');
-            isValid = false;
-            return;
-        }
+          <Input
+            type='password'
+            placeholder='Sua senha'
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            htmlFor='password'
+            id='password'
+          />
 
-        if (isValid) {
-            setError('');
-            setIsregistred(true);
-        }
-
-        axios.post("http://localhost:3001/register", {
-            Nome: name,
-            Sobrenome: sobrenome,
-            Telefone: telefone,
-            Email: email,
-            Senha: password
-        })
-        
-    };
-
-    return (
-        <RegisterContainer>
-            <h1>Cadastrar usuário</h1>
-            {isRegistred ? (
-                <SucessMessage id='success'>
-                    <h2>Usuario Cadastrado com Sucesso</h2>
-                    <img src={Correto} alt='Correto' />
-                </SucessMessage>
-            ) : (
-                <form action=''>
-                    <Input type='text' placeholder='Nome' onChange={(e) => setName(e.target.value)} htmlFor='name' id='name' />
-
-                    <Input type='text' placeholder='Sobrenome' onChange={(e) => setSobrenome(e.target.value)} htmlFor='Sobrenome' id='Sobrenome' />
-
-                    <Input type='tel' placeholder='(xx) xxxxx-xxxx' onChange={(e) => setTelefone(e.target.value)} htmlFor='Telefone' id='Telefone' />
-
-                    <Input type='email' placeholder='Email' onChange={(e) => setEmail(e.target.value)} htmlFor='email' id='email' />
-
-                    <Input type='password' placeholder='Sua senha' onChange={(e) => setpassword(e.target.value)} htmlFor='password' id='password' />
-
-                    <Input type='password' placeholder='Confirmar senha' onChange={(e) => setConfirmpassword(e.target.value)} htmlFor='Confirmpassword' id='Confirmpassword' />
-                    {error && <p id='error'>{error}</p>}
-                </form>
-            )}
-            {!isRegistred && <Button childreen='Cadastrar' onClick={HandleClick}></Button>}
-        </RegisterContainer>
-    );
+          <Input
+            type='password'
+            placeholder='Confirmar senha'
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            htmlFor='confirmPassword'
+            id='confirmPassword'
+          />
+          {error && <p id='error'>{error}</p>}
+        </form>
+      )}
+      {!isRegistered && <Button childreen='Cadastrar' onClick={handleClick} />}
+    </RegisterContainer>
+  );
 };
 
 export default Register;

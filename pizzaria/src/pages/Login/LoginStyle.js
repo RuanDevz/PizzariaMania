@@ -34,4 +34,10 @@ form{
     font-weight: bold;
 }
 
+p#error{
+   color: red;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
 `
