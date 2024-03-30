@@ -6,9 +6,11 @@ import Login from './pages/Login/Login';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Register from './pages/Register/Register';
 import Dashboard from './pages/Dashboard/dashboard'
+import Logincontext from './context/Logincontext'
 
 const App = () => {
   return (
+    <Logincontext.Provider value={}>
     <Router>
       <div>
         <Header />
@@ -21,6 +23,7 @@ const App = () => {
         </Routes>
       </div>
     </Router>
+    </Logincontext.Provider>
   );
 };
 
