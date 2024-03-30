@@ -1,16 +1,14 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { ContainerLogin } from './LoginStyle';
 import Input from '../../components/Inputs/Input';
 import Button from '../../components/button/Button';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import Logincontext from '../../context/Logincontext';
 
 const Login = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const navigate = useNavigate();
-  const 
+const navigate = useNavigate()
+  const {setError, error, username, setUsername, password, setPassword} = useContext(Logincontext)
 
   const handleLoginSubmit = async (e) => {
     e.preventDefault();

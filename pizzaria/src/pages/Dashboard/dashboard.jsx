@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import {DashboardContainer} from './dashboardStyle'
 import axios from 'axios'
 import Button from '../../components/button/Button'
+import Logincontext from '../../context/Logincontext';
 
 const Dashboard = () => {
-  const [username, setUsername] = useState('Ruan');
   const [Order, setOrder] = useState([])
+  const {username} = useContext(Logincontext)
 
   useEffect(() => {
     axios.get("http://localhost:3001/order").then((response) =>{
