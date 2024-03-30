@@ -23,18 +23,24 @@ border-bottom: grey 1px solid;
     cursor: pointer;
 }
 
+.options{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
 .menuoptions{
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     position: absolute;
+    transform: translateX(-70%);
     list-style-type: none;
-    // background-color: #151515; //
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     z-index: 1;
+    background-color: white;
+    width: 60%;
+    border-radius: 20px;
 }
 .menuoptions li{
     margin: 40px 0px;

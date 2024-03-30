@@ -9,46 +9,32 @@ const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const [responseData, setResponseData] = useState(null);
   const navigate = useNavigate();
 
-  const handleLoginSubmit = (e) => {
-    let isValid = true;
+  const handleLoginSubmit = async (e) => {
+    e.preventDefault();
 
-    if (username.length === 0 || password.length === 0) {
+    if (username.trim() === '' || password.trim() === '') {
       setError('Preencha os campos corretamente');
-      isValid = false;
-      return; 
-    }
-
-    if (username.length === 0) {
-      setError('Digite o nome do seu usuário');
-      isValid = false;
-      return; 
-    }
-
-    if (password.length === 0) {
-      setError('Digite sua senha');
-      isValid = false;
-      return; 
-    }
-
-    if (!isValid) {
       return;
     }
 
-    e.preventDefault();
-    const data = { Username: username, Password: password };
-    axios
-      .post('http://localhost:3001/user/login', data).then((response) => {
-        setResponseData(response.data);
-        console.log(response.data);
-        navigate('/dashboard');
-      })
-      .catch((error) => {
-        setError('Falha ao logar, por favor, verifique suas credenciais');
-        console.error('Login error:', error);
+    try {
+      const response = await axios.post('http://localhost:3001/user/login', {
+        Username: username,
+        Password: password,
       });
+
+      if (response.data.error) {
+        setError(response.data.error);
+      } else {
+        setError('');
+        navigate('/dashboard');
+      }
+    } catch (error) {
+      setError('Falha ao logar, por favor, verifique suas credenciais');
+      console.error('Login error:', error);
+    }
   };
 
   return (
@@ -72,7 +58,7 @@ const Login = () => {
           id="password"
         />
         {error && <p id="error">{error}</p>}
-        <Button childreen="Entrar" type="submit"></Button>
+        <Button childreen='Entrar' type="submit" />
       </form>
       <div className="Join">
         <Link to="/register" className="register">

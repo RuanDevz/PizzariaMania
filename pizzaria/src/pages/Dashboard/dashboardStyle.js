@@ -24,7 +24,12 @@ p{
     color: grey;
 }
 
+span#name{
+    color: #ff5b00;
+}
+
 p#price{
+    margin-top: 22px;
     color: #000;
 }
 .Product{

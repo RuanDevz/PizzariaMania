@@ -15,7 +15,7 @@ const Dashboard = () => {
 
   return (
     <DashboardContainer>
-      <h1>Bem vindo a Pizzaria Mania, {username}!</h1>
+      <h1>Bem vindo a Pizzaria Mania, <span id='name'>{username}</span>!</h1>
       <h1>Mais pedidos</h1>
       {Order.map((orders) =>{
         return(

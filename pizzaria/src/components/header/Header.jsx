@@ -4,6 +4,11 @@ import logo from '../../assets/logo.png';
 import { LuMenu } from 'react-icons/lu';
 import { IoMdClose } from 'react-icons/io';
 import {Link} from 'react-router-dom'
+import { FaHome } from "react-icons/fa";
+import { FaRegListAlt } from "react-icons/fa";
+import { FaShoppingCart } from "react-icons/fa";
+
+
 
 const Header = () => {
   const [menuactive, setMenuactive] = useState(false);
@@ -23,9 +28,18 @@ const Header = () => {
           <>
             <IoMdClose className='menubar' onClick={showMenu} />
             <ul className='menuoptions'>
-              <li>Home</li>
-              <li>Login</li>
-              <li>Register</li>
+            <div className='options'>
+            <FaHome  />
+            <li>Inicio</li>
+            </div>
+            <div className='options'>
+            <FaRegListAlt />
+            <li>Pedidos</li>
+            </div>
+            <div className='options'>
+            <FaShoppingCart />
+            <li>Carrinho</li>
+            </div>
             </ul>
           </>
         ) : (

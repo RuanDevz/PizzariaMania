@@ -35,4 +35,7 @@ img{
     text-align: center;
     font-size: 1.4em;
 }
+a{
+    text-decoration: none;
+}
 `
