@@ -55,6 +55,10 @@ const Register = () => {
         Password: password,
       })
       .then((response) => {
+        if(response.data.error){
+          setError(response.data.error)
+          return
+        }
         setIsRegistered(true);
         console.log(response.data);
       })
@@ -62,6 +66,7 @@ const Register = () => {
         console.error('Erro ao cadastrar usuário:', error);
       });
   };
+
 
   return (
     <RegisterContainer>
