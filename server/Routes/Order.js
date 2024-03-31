@@ -7,7 +7,7 @@ const { Order } = require('../models')
 router.post('/', async (req,res) =>{
     const order = req.body
     const CreateOrder = await Order.create(order)
-    res.json(CreateOrder).status(200)
+    res.json({CreateOrder, message: "Pedido criado com sucesso"}).status(200)
 })
 
 router.get('/', async (req,res) =>{

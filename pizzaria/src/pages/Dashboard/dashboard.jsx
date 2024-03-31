@@ -24,7 +24,7 @@ const Dashboard = () => {
             <h1>{orders.Product}</h1>
             <p>{orders.Description}</p>
             <img src={orders.Img} alt={orders.id} />
-            <p id='price'>Preço: R$:{orders.Price},00</p>
+            <p id='price'>Preço: R${orders.Price},00</p>
             <Button childreen='Comprar' />
           </div>
         )
