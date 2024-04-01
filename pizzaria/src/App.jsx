@@ -8,6 +8,7 @@ import Register from './pages/Register/Register';
 import Dashboard from './pages/Dashboard/dashboard';
 import Logincontext from './context/Logincontext';
 import Adicionar from './pages/Adicionar/Adicionar';
+import Editar from './pages/Editar/Editar';
 import Listadeprodutos from './pages/Lista de Produtos/Listadeprodutos';
 
 
@@ -39,6 +40,7 @@ const App = () => {
             <Route path='/admin' element={<Admin />} />
             <Route path='/admin/adicionar' element={<Adicionar />} />
             <Route path='/admin/Listadeprodutos' element={<Listadeprodutos />}></Route>
+            <Route path='/admin/editar' element={<Editar/>}></Route>
           </Routes>
         </div>
       </Router>
