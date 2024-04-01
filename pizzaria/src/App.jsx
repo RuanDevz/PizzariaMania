@@ -19,6 +19,7 @@ const App = () => {
   const [error, setError] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [Order, setOrder] = useState([])
+  const [admin, setAdmin] = useState(false)
 
   return (
     <Logincontext.Provider

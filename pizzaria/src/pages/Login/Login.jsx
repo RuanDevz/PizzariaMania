@@ -9,6 +9,7 @@ import Logincontext from '../../context/Logincontext';
 const Login = () => {
 const navigate = useNavigate()
   const {setError, error, username, setUsername, password, setPassword} = useContext(Logincontext)
+  const {admin, setAdmin} = useContext(Logincontext)
 
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
