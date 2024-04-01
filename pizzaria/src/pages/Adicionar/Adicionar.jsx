@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { ContainerCreate,Sucesscreateorder,Containerdiv } from './CreateStyle';
+import { ContainerCreate,Sucesscreateorder,Containerdiv } from './AdicionarStyle';
 import Button from '../../components/button/Button';
 import axios from 'axios';
 import Correto from '../../assets/Correto.png'
 import {useNavigate} from 'react-router-dom'
 
-const Create = () => {
+const Adicionar = () => {
   const [product, setProduct] = useState('');
   const [description, setDescription] = useState('');
   const [img, setImg] = useState('');
@@ -91,4 +91,4 @@ const Create = () => {
   );
 };
 
-export default Create;
+export default Adicionar;

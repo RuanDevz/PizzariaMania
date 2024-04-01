@@ -43,6 +43,10 @@ h2{
     color: #dc3545;
 }
 
+#list{
+    color: #fd7e14;
+}
+
 .container_gerenciamento{
     display: flex;
     justify-content: center;

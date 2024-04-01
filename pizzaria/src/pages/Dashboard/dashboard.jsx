@@ -5,7 +5,7 @@ import Button from '../../components/button/Button'
 import Logincontext from '../../context/Logincontext';
 
 const Dashboard = () => {
-  const [Order, setOrder] = useState([])
+  const {setOrder, Order} = useContext(Logincontext)
   const {username} = useContext(Logincontext)
 
   useEffect(() => {
