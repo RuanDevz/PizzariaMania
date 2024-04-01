@@ -13,6 +13,23 @@ router.get('/', async (req, res) => {
   res.status(201).json(GetOrders);
 });
 
+router.get('/:id',async (req,res) =>{
+  let {id} = req.params
+  const getorderbyid = req.body
+  
+  try{
+    const existingProduct = await Order.findByPk(id)
+
+    if(!existingProduct){
+      res.status(400).json({message: "Pedido não encontrado"})
+    }
+    res.status(200).json({existingProduct})
+
+  }catch(error){
+    res.status(500).json({error: "Erro interno do servidor"})
+  }
+})
+
 router.get('/:id/edit', async (req, res) => {
   const { id } = req.params;
 
@@ -57,6 +74,26 @@ router.put('/:id', async (req, res) => {
     res.status(500).json({ message: "Erro interno do servidor" });
   }
 });
+
+router.delete('/:id', async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const existingOrder = await Order.findByPk(id);
+
+    if (!existingOrder) {
+      return res.status(404).json({ error: "Pedido não encontrado" });
+    }
+
+    await existingOrder.destroy(); 
+
+    return res.status(200).json({ message: "Pedido removido com sucesso!" }); 
+  } catch (error) {
+    console.error("Erro ao remover pedido:", error);
+    return res.status(500).json({ error: "Erro interno do servidor" }); 
+  }
+});
+
 
 
 

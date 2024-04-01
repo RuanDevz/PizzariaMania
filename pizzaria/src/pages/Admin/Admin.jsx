@@ -27,7 +27,7 @@ const navigate = useNavigate()
         </div>
         <div className='container_gerenciamento'>
           <h2>Remover</h2>
-          <FaRegTrashAlt id='remove' className='icon' />
+          <FaRegTrashAlt onClick={() => navigate('/admin/remover')} id='remove' className='icon' />
         </div>
       </Gerenciamento>
     </AdminContainer>
