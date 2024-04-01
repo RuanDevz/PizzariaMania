@@ -23,7 +23,7 @@ const navigate = useNavigate()
         </div>
         <div className='container_gerenciamento'>
           <h2>Editar</h2>
-          <MdModeEdit id='edit' className='icon' />
+          <MdModeEdit onClick={() => navigate('/admin/editar')} id='edit' className='icon' />
         </div>
         <div className='container_gerenciamento'>
           <h2>Remover</h2>

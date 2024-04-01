@@ -23,7 +23,7 @@ margin: -40px 0px;
   }
 
   .input {
-    font-size: 1em;
+    font-size: 1.5em;
     margin: 30px 0px;
     padding: 0.6em 1em;
     border: none;
@@ -46,6 +46,7 @@ margin: -40px 0px;
 
     &::placeholder {
       color: #999;
+      font-size: 0.6em;
     }
   }
 
@@ -78,4 +79,26 @@ margin: -40px 0px;
     justify-content: center;
     align-items: center;
   }
+
+  p#error{
+    text-align: center;
+    font-weight: bold;
+    color: red;
+  }
 `;
+
+export const Successupdatedorder = styled.div`
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+margin-top: 140px;
+
+
+h1{
+  font-size: 1.4em;
+}
+img{
+  width: 150px;
+}
+` 
