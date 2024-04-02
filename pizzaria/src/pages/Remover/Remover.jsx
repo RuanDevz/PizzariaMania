@@ -20,7 +20,7 @@ const Remover = () => {
     setModalremove(false);
     setShowSuccessMessage(true);
     setTimeout(() => {
-      navigate('/admin/remov');
+      navigate('/admin/remover');
     }, 3000);
   };
 
