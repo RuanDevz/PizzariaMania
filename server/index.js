@@ -5,6 +5,9 @@ const port = 3001
 const db = require('./models')
 const UserRouter = require("./Routes/User")
 const OrderRouter = require("./Routes/Order")
+const env = require('dotenv')
+
+env.config()
 
 
 app.use(cors())

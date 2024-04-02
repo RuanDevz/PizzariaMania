@@ -1,3 +1,4 @@
+
 {
   "development": {
     "username": "postgres",
@@ -15,10 +16,10 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "f4jiu2uf34l4whr1",
-    "password": "giadq0byel5o5iq1",
-    "database": "d66zo4sssp3qe2yi",
-    "host": "g9fej9rujq0yt0cd.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
-    "dialect": "mysql"
+    "username": "pizzaria_owner",
+    "password": "PQ3LBoAN6nVD",
+    "database": "pizzaria",
+    "host": "ep-restless-boat-a546pujc.us-east-2.aws.neon.tech",
+    "dialect": "postgres"
   }
 }
