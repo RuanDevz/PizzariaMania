@@ -41,4 +41,31 @@ margin-top: 5px;
 font-weight: bolder;
 }
 
+@media only screen and (min-width: 1024px){
+    display: flex;
+    justify-content: space-around;
+    h1{
+        font-size: 2.3em;
+        padding-top: 0px;
+    }
+
+    img{
+        margin-top: 70px;
+        width: 400px;
+    }
+
+    .register{
+        position: absolute;
+        top: 700px;
+    }
+
+    .front{
+        width: 350px;
+    }
+
+    .input{
+        width: 350px;
+    }
+}
+
 `

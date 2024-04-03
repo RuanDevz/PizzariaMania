@@ -5,6 +5,7 @@ import Button from '../../components/button/Button';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Logincontext from '../../context/Logincontext';
+import Pizzaiolo from '../../assets/pizzaiolo.png'
 
 const Login = () => {
 const navigate = useNavigate()
@@ -39,8 +40,8 @@ const navigate = useNavigate()
 
   return (
     <ContainerLogin>
-      <h1>Login</h1>
       <form onSubmit={handleLoginSubmit}>
+      <h1>Login</h1>
         <Input
           type="text"
           placeholder="Username"
@@ -58,12 +59,15 @@ const navigate = useNavigate()
           id="password"
         />
         {error && <p id="error">{error}</p>}
-        <Button childreen='Entrar' type="submit" />
-      </form>
-      <div className="Join">
+        <Button className='Entrar' childreen='Entrar' type="submit" />
+        <div className="Join">
         <Link to="/register" className="register">
           Não possui uma conta?
         </Link>
+      </div>
+      </form>
+      <div>
+        <img id='pizzaiolo' src={Pizzaiolo} alt="" />
       </div>
     </ContainerLogin>
   );

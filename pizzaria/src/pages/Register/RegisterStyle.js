@@ -8,6 +8,9 @@ export const RegisterContainer = styled.div`
     flex-direction: column;
     gap: 50px;
 
+    .front{
+        width: 350px;
+    }
     h1 {
         text-align: center;
         color: #ff5b00;
@@ -26,6 +29,16 @@ export const RegisterContainer = styled.div`
             font-weight: bold;
             color: red;
             text-align: center;
+        }
+
+        @media only screen and (min-width: 1024px){
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            .front{
+                width: 350px;
+            }
+            
         }
     }
 `;
@@ -56,3 +69,10 @@ export const SucessMessage = styled.div`
             width: 60px;
         }
 `
+
+export const Containerinputs = styled.div`
+display: flex;
+flex-direction: column;
+gap: 80px;
+`
+

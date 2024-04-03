@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { RegisterContainer, SucessMessage } from './RegisterStyle.js';
+import { RegisterContainer, SucessMessage,Containerinputs } from './RegisterStyle.js';
 import Input from '../../components/Inputs/Input.jsx';
 import Button from '../../components/button/Button.jsx';
 import Correto from '../../assets/Correto.png';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import pizzaiolo from '../../assets/pizzaiolo.png'
 
 const Register = () => {
   const [username, setUsername] = useState('');
@@ -78,6 +79,7 @@ const Register = () => {
         </SucessMessage>
       ) : (
         <form>
+          <Containerinputs>
           <Input
             type='text'
             placeholder='Nome'
@@ -104,7 +106,9 @@ const Register = () => {
             htmlFor='confirmPassword'
             id='confirmPassword'
           />
+          </Containerinputs>
           {error && <p id='error'>{error}</p>}
+
         </form>
       )}
       {!isRegistered && <Button childreen='Cadastrar' onClick={handleClick} />}

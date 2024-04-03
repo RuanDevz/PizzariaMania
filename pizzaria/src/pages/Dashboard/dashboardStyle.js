@@ -47,6 +47,15 @@ p#price{
     -moz-box-shadow: 2px 4px 17px 0px rgba(0,0,0,0.75);
     box-shadow: 2px 4px 17px 0px rgba(0,0,0,0.75);
 }
+
+@media only screen and (min-width: 1024px){
+.Product{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+}
 `
 
 export const Containerconfig = styled.div`
