@@ -19,7 +19,7 @@ const App = () => {
   const [error, setError] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [Order, setOrder] = useState([])
-  const [admin, setAdmin] = useState(false)
+  const [isadmin, setIsadmin] = useState(false)
 
   return (
     <Logincontext.Provider
@@ -28,7 +28,8 @@ const App = () => {
         password, setPassword,
         error, setError,
         setOrder,Order,
-        isLoggedIn, setIsLoggedIn
+        isLoggedIn, setIsLoggedIn,
+        isadmin, setIsadmin
       }}
     >
       <Router>

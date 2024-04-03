@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useEffect, useState } from 'react'
-import { ContainerHome } from './HomeStyle'
+import { ContainerHome,TitleHomepage } from './HomeStyle'
 import pizzaiolo from '../../assets/pizzaiolo.png'
 import Button from '../../components/button/Button'
 import {Link} from 'react-router-dom'
@@ -8,16 +8,18 @@ import {Link} from 'react-router-dom'
 
 const Home = () => {
   return (
+    <div>
+      <TitleHomepage>Pizzaria Mania</TitleHomepage>
     <ContainerHome>
         <div>
-            <h1>Pizzaria family</h1>
             <img src={pizzaiolo} alt="comidas" />
         </div>
         <div className='infos'>
           <p>as pessoas decepcionam, mas a pizza nunca decepciona</p>
-          <Link to='/login'><Button childreen='Peça já o seu'/></Link>
+          <Link to='/login'><Button className='button' childreen='Peça já o seu'/></Link>
         </div>
     </ContainerHome>
+        </div>
   )
 }
 

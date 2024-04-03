@@ -51,4 +51,36 @@ a{
     text-decoration: none;
     color: #ff5b00;
 }
+
+@media only screen and (min-width: 1024px){
+.menubar{
+    display: none;
+}
+
+.menuoptions{
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    gap: 80px;
+    background-color: none;
+}
+
+.menuoptions li{
+    margin: 10px 0px;
+}
+
+.menu{
+    font-size: 1.3em;
+}
+
+.options{
+    cursor: pointer;
+
+    &:hover{
+        color: #db4e00;
+    }
+}
+
+}
 `

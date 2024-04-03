@@ -7,6 +7,9 @@ import {Link} from 'react-router-dom'
 import { FaHome } from "react-icons/fa";
 import { FaRegListAlt } from "react-icons/fa";
 import { FaShoppingCart } from "react-icons/fa";
+import { GrLogin } from "react-icons/gr";
+import { FaUserPlus } from "react-icons/fa6";
+
 
 
 
@@ -33,12 +36,12 @@ const Header = () => {
             <li>Inicio</li>
             </div>
             <div className='options'>
-            <FaRegListAlt />
-            <li>Pedidos</li>
+            <GrLogin />
+            <li>Entrar</li>
             </div>
             <div className='options'>
-            <FaShoppingCart />
-            <li>Carrinho</li>
+            <FaUserPlus />
+            <li>Cadastrar</li>
             </div>
             </ul>
           </>

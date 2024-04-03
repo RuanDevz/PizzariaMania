@@ -48,3 +48,21 @@ p#price{
     box-shadow: 2px 4px 17px 0px rgba(0,0,0,0.75);
 }
 `
+
+export const Containerconfig = styled.div`
+display: flex;
+justify-content: flex-end;
+margin-right: 30px;
+align-items: center;
+width: 100%;
+position: absolute;
+top: 100px;
+
+.config{
+    text-align: right;
+    text-decoration: none;
+    color: #ff5b00;
+    font-weight:bolder;
+}
+
+`

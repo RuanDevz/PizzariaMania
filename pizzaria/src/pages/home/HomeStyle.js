@@ -38,4 +38,38 @@ img{
 a{
     text-decoration: none;
 }
+
+
+@media only screen and (min-width: 1024px){
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-around;
+
+    img{
+        width: 500px;
+    }
+
+    .infos p{
+        max-width: 600px;
+        font-size: 2em;
+    }
+
+    .front{
+        width: 500px;
+        padding: 30px 0px;
+        font-size: 1.5em;
+    }
+}
+`
+
+export const TitleHomepage = styled.h1`
+        text-align: center;
+        color: #ff5b00;
+        font-weight: bolder;
+        font-size: 2em;
+        margin-top: 20px;
+
+        @media only screen and (min-width: 1024px){
+            font-size: 3em;
+        }
 `
