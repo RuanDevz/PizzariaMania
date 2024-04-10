@@ -26,6 +26,8 @@ const navigate = useNavigate()
         Password: password,
       });
 
+      sessionStorage.setItem("accessToken", response.data)
+
       if (response.data.error) {
         setError(response.data.error);
       } else {

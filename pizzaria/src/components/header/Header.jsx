@@ -7,6 +7,8 @@ import { Link, useNavigate } from 'react-router-dom'
 import { FaHome } from "react-icons/fa";
 import { GrLogin } from "react-icons/gr";
 import { FaUserPlus } from "react-icons/fa6";
+import { FaShoppingCart } from "react-icons/fa";
+
 
 const Header = () => {
   const [menuactive, setMenuactive] = useState(true);
@@ -56,6 +58,10 @@ const Header = () => {
               <div onClick={() => navigate('/register')} className='options'>
                 <FaUserPlus />
                 <li>Cadastrar</li>
+              </div>
+              <div className='options'>
+              <FaShoppingCart />
+              <li>Carrinho</li>
               </div>
             </ul>
           </>

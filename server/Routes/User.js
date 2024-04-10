@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const bcrypt = require('bcrypt')
 const {User} = require('../models')
+const {sign} = require('jsonwebtoken')
 
 router.post('/', async (req, res) => {
     try {
@@ -41,9 +42,9 @@ router.post('/login', async (req,res) =>{
             return res.json({ error: "Usuário com a senha não combinam"})
         }
 
-        
+        const accessToken = sign({username: user.Username, id: user.id}, "Tokenimportant")
 
-        res.json("Usuário logado!")
+        res.json(accessToken)
     })
 })
 

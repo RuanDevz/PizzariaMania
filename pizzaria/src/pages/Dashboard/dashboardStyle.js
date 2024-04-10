@@ -49,12 +49,7 @@ p#price{
 }
 
 @media only screen and (min-width: 1024px){
-.Product{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-wrap: wrap;
-}
+justify-content: space-around;
 }
 `
 
@@ -73,5 +68,31 @@ top: 100px;
     color: #ff5b00;
     font-weight:bolder;
 }
-
 `
+
+export const Product = styled.div`
+  @media only screen and (min-width: 1024px) {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 1200px;
+
+    .Product-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-direction: column;
+      width: 300px;
+      margin: 30px 50px; 
+      padding: 20px;
+      border-radius: 20px;
+      background-color: #f0f0f0;
+      box-shadow: 2px 4px 17px 0px rgba(0, 0, 0, 0.75);
+
+      img{
+        width: 200px;
+      }
+    }
+  }
+`;
