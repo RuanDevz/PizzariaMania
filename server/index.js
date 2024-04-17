@@ -15,5 +15,5 @@ app.use("/user", UserRouter )
 app.use("/order", OrderRouter)
 
 db.sequelize.sync().then(() =>{
-    app.listen(port, () => console.log(`Server is running on port ${port}`))
+    app.listen(process.env.PORT || port, () => console.log(`Server is running on port ${port}`))
 })
