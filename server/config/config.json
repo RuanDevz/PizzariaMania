@@ -16,10 +16,19 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "pizzaria_owner",
-    "password": "PQ3LBoAN6nVD",
-    "database": "pizzariamania",
-    "host": "ep-shy-sea-a52149ul.us-east-2.aws.neon.tech",
-    "dialect": "postgres"
+    "production": {
+      "username": "pizzaria_owner",
+      "password": "PQ3LBoAN6nVD",
+      "database": "pizzariamania",
+      "host": "ep-shy-sea-a52149ul.us-east-2.aws.neon.tech",
+      "dialect": "postgres",
+      "ssl": true,
+      "dialectOptions": {
+        "ssl": {
+          "require": true,
+          "rejectUnauthorized": false
+        }
+      }
+    }
   }
 }
