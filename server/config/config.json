@@ -16,7 +16,6 @@
     "dialect": "mysql"
   },
   "production": {
-    "production": {
       "username": "pizzaria_owner",
       "password": "PQ3LBoAN6nVD",
       "database": "pizzariamania",
@@ -28,7 +27,6 @@
           "require": true,
           "rejectUnauthorized": false
         }
-      }
     }
   }
 }
