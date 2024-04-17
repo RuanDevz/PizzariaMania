@@ -21,7 +21,7 @@ const navigate = useNavigate()
     }
 
     try {
-      const response = await axios.post('https://pizzariamania3.onrender.com//user/login', {
+      const response = await axios.post('https://pizzariamania3.onrender.com/user/login', {
         Username: username,
         Password: password,
       });

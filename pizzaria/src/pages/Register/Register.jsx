@@ -51,7 +51,7 @@ const Register = () => {
     }
 
     axios
-      .post('https://pizzariamania3.onrender.com//user', {
+      .post('https://pizzariamania3.onrender.com/user', {
         Username: username,
         Password: password,
       })

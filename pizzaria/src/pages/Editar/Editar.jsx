@@ -32,7 +32,7 @@ const Editar = () => {
     setUpdated(true)
 
     try {
-      const response = await axios.put(`https://pizzariamania3.onrender.com//order/${id}`, dadosAtualizados);
+      const response = await axios.put(`https://pizzariamania3.onrender.com/order/${id}`, dadosAtualizados);
       console.log(response.data)
       console.log(dadosAtualizados);
     } catch (error) {

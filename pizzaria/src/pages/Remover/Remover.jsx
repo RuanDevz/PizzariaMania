@@ -25,7 +25,7 @@ const Remover = () => {
   };
 
   const HandleRemove = () => {
-    axios.get(`https://pizzariamania3.onrender.com//order/${id}`)
+    axios.get(`https://pizzariamania3.onrender.com/order/${id}`)
       .then((response) => {
         const data = response.data;
         if (data && data.existingProduct) {
