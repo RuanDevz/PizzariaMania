@@ -16,11 +16,10 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "postgres",
-    "password": "Ruan1120#@",
-    "database": "pizzaria",
-    "host": "localhost",
-    "port": 5432,
-    "dialect": "postgres"
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
   }
 }
