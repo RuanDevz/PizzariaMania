@@ -9,7 +9,7 @@ const Listadeprodutos = () => {
 const [products, setProducts] = useState([])
 
 useEffect(() => {
-  axios.get("http://localhost:3001/order").then((response)=>{
+  axios.get("https://pizzariamania3.onrender.com//order").then((response)=>{
     setProducts(response.data)
   })
 },[])

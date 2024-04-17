@@ -9,7 +9,7 @@ const Dashboard = () => {
   const { setOrder, Order, username, isadmin, setIsadmin } = useContext(Logincontext);
 
   useEffect(() => {
-    axios.get("http://localhost:3001/order").then((response) => {
+    axios.get("https://pizzariamania3.onrender.com//order").then((response) => {
       setOrder(response.data);
     });
   }, []);

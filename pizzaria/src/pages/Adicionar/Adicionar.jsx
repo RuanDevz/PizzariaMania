@@ -21,7 +21,7 @@ const Adicionar = () => {
       return;
     }
 
-    axios.post('http://localhost:3001/order', {
+    axios.post('https://pizzariamania3.onrender.com//order', {
       Product: product,
       Description: description,
       Img: img,
