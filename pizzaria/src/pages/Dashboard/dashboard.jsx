@@ -1,12 +1,15 @@
+/* eslint-disable react/no-children-prop */
 import React, { useContext, useEffect } from 'react';
 import axios from 'axios';
 import { DashboardContainer, Product } from './dashboardStyle';
 import Button from '../../components/button/Button';
 import Logincontext from '../../context/Logincontext';
 import Cart from '../../components/Cart/Cart';
+import Header from '../../components/header/Header';
+import { IoMdTrendingUp } from 'react-icons/io';
 
 const Dashboard = () => {
-  const { setOrder, Order, username, isadmin, setIsadmin, cartitems, setCartitems } = useContext(Logincontext);
+  const { setOrder, Order, username, isadmin, setIsadmin, cartitems, setCartitems,modalvisible, setModalvisible, count, setCount} = useContext(Logincontext);
 
   useEffect(() => {
     axios.get("https://pizzariamania3.onrender.com/order").then((response) => {
@@ -24,10 +27,17 @@ const Dashboard = () => {
 
   const Addtocart = (item) => {
     setCartitems(prevItems => [...prevItems, item]);
+    if(modalvisible){
+      modalvisible(false)
+    }else{
+      setModalvisible(true)
+    }
   };
+
 
   return (
     <div>
+      <Header />
       <DashboardContainer>
         <Cart/>
         <h1>Bem vindo a Pizzaria Mania, <span id='name'>{username}</span>!</h1>
@@ -39,7 +49,7 @@ const Dashboard = () => {
               <p>{order.Description}</p>
               <img src={order.Img} alt={order.id} />
               <p id='price'>Preço: R${order.Price},00</p>
-              <Button onClick={() => Addtocart(order)} childreen='Comprar' />
+              <Button onClick={() => Addtocart(order)} children='Comprar' />
             </div>
           ))}
         </Product>

@@ -1,3 +1,4 @@
+/* eslint-disable react/no-children-prop */
 import React, { useEffect, useState } from 'react';
 import { ContainerEditar, Inputsedit,Successupdatedorder } from './EditarStyle';
 import Button from '../../components/button/Button';
@@ -119,7 +120,7 @@ const Editar = () => {
                 <div className="highlight"></div>
                 {error && <p id='error'>{error}</p>}
                 <div className='button'>
-                  <Button onClick={handleSubmit} childreen='Atualizar Pedido' type="button" />
+                  <Button onClick={handleSubmit} children='Atualizar Pedido' type="button" />
                 </div>
               </div>
             </div>

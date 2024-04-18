@@ -1,3 +1,4 @@
+/* eslint-disable react/no-children-prop */
 import React, { useEffect, useState } from 'react';
 import { ContainerCreate,Sucesscreateorder,Containerdiv } from './AdicionarStyle';
 import Button from '../../components/button/Button';
@@ -83,7 +84,7 @@ const Adicionar = () => {
           <div className="highlight"></div>
         </div>
         {error && <div id="error">{error}</div>}
-        <Button onClick={handleAddProduct} childreen='Cadastrar produto' />
+        <Button onClick={handleAddProduct} children='Cadastrar produto' />
         </Containerdiv>
         </div>
       )}

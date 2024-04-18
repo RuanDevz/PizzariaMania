@@ -1,3 +1,4 @@
+/* eslint-disable react/no-children-prop */
 import React, { useState, useEffect } from 'react';
 import { ContainerRemover, ContainerInput } from './RemoverStyle';
 import Button from '../../components/button/Button';
@@ -75,8 +76,8 @@ const Remover = () => {
               <img src={existingProduct.Img} alt={existingProduct.Product} />
               <p>Preço: R${existingProduct.Price}</p>
               <div className='confirmbutton'>
-                <Button onClick={Yes} childreen='Sim' />
-                <Button onClick={Not} childreen='Não' />
+                <Button onClick={Yes} children='Sim' />
+                <Button onClick={Not} children='Não' />
               </div>
             </div>
           )}
@@ -103,7 +104,7 @@ const Remover = () => {
               <div className="highlight"></div>
             </div>
             {error && <p>{error}</p>}
-            <Button childreen='Remover Pedido' onClick={HandleRemove}></Button>
+            <Button children='Remover Pedido' onClick={HandleRemove}></Button>
           </ContainerInput>
         </div>
       )}

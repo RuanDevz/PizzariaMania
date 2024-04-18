@@ -1,3 +1,4 @@
+/* eslint-disable react/no-children-prop */
 import React, { useContext, useState } from 'react';
 import { ContainerLogin } from './LoginStyle';
 import Input from '../../components/Inputs/Input';
@@ -7,6 +8,8 @@ import axios from 'axios';
 import Logincontext from '../../context/Logincontext';
 import Pizzaiolo from '../../assets/pizzaiolo.png';
 import Loading from '../../components/Loading/Loading';
+import Header from '../../components/header/Header'
+import Headerstart from '../../components/Headerstart/Headerstart';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -15,11 +18,11 @@ const Login = () => {
 
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true); // Set loading state before making the request
+    setLoading(true); 
 
     if (username.trim() === '' || password.trim() === '') {
       setError('Preencha os campos corretamente');
-      setLoading(false); // Reset loading state
+      setLoading(false); 
       return;
     }
 
@@ -43,48 +46,50 @@ const Login = () => {
       setError('Falha ao logar, por favor, verifique suas credenciais');
       console.error('Login error:', error);
     } finally {
-      setLoading(false); // Reset loading state regardless of success or failure
+      setLoading(false); 
     }
   };
 
   return (
     <ContainerLogin>
       {loading ? (
-        <Loading />
+        <>
+          <Loading />
+        </>
       ) : (
-        <form onSubmit={handleLoginSubmit}>
-          <h1>Login</h1>
-          <Input
-            type="text"
-            placeholder="Username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            htmlFor="login"
-            id="login"
-          />
-          <Input
-            type="password"
-            placeholder="Senha"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            htmlFor="password"
-            id="password"
-          />
-          {error && <p id="error">{error}</p>}
-          <Button className="Entrar" childreen="Entrar" type="submit" />
-          <div className="Join">
-            <Link to="/register" className="register">
-              Não possui uma conta?
-            </Link>
-          </div>
-        </form>
+        <>
+          <form onSubmit={handleLoginSubmit}>
+            <h1>Login</h1>
+            <Input
+              type="text"
+              placeholder="Username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              htmlFor="login"
+              id="login"
+            />
+            <Input
+              type="password"
+              placeholder="Senha"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              htmlFor="password"
+              id="password"
+            />
+            {error && <p id="error">{error}</p>}
+            <Button className="Entrar" children='Entrar' type="submit" />
+            <div className="Join">
+              <Link to="/register" className="register">
+                Não possui uma conta?
+              </Link>
+            </div>
+          </form>
+        </>
       )}
-      {loading ? (
-        <span></span>
-      ):(
+      {!loading && (
         <div>
-        <img id="pizzaiolo" src={Pizzaiolo} alt="" />
-      </div>
+          <img id="pizzaiolo" src={Pizzaiolo} alt="" />
+        </div>
       )}
     </ContainerLogin>
   );

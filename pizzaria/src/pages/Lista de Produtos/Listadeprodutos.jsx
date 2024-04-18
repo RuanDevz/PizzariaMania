@@ -8,6 +8,8 @@ const Listadeprodutos = () => {
 
 const [products, setProducts] = useState([])
 
+const {loading, setLoading} = useContext(Logincontext)
+
 useEffect(() => {
   axios.get("https://pizzariamania3.onrender.com/order").then((response)=>{
     setProducts(response.data)

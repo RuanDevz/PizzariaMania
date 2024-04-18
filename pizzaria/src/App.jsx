@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import Header from './components/header/Header';
 import Home from './pages/home/Home';
 import Login from './pages/Login/Login';
 import Admin from './pages/Admin/Admin';
+import Header from './components/header/Header';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Register from './pages/Register/Register';
 import Dashboard from './pages/Dashboard/dashboard';
@@ -21,6 +21,8 @@ const App = () => {
   const [Order, setOrder] = useState([])
   const [isadmin, setIsadmin] = useState(false)
   const [cartitems, setCartitems] = useState([])
+  const [modalvisible, setModalvisible] = useState(false)
+  const [count, setCount] = useState(1)
 
   return (
     <Logincontext.Provider
@@ -31,12 +33,13 @@ const App = () => {
         setOrder,Order,
         isLoggedIn, setIsLoggedIn,
         isadmin, setIsadmin,
-        cartitems, setCartitems
+        cartitems, setCartitems,
+        modalvisible, setModalvisible,
+        count, setCount
       }}
     >
       <Router>
         <div>
-          <Header />
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/login' element={<Login />} />
