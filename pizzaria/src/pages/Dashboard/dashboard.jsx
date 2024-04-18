@@ -6,7 +6,7 @@ import Logincontext from '../../context/Logincontext';
 import Cart from '../../components/Cart/Cart';
 
 const Dashboard = () => {
-  const { setOrder, Order, username, isadmin, setIsadmin } = useContext(Logincontext);
+  const { setOrder, Order, username, isadmin, setIsadmin, cartitems, setCartitems } = useContext(Logincontext);
 
   useEffect(() => {
     axios.get("https://pizzariamania3.onrender.com/order").then((response) => {
@@ -17,6 +17,14 @@ const Dashboard = () => {
   useEffect(() => {
     setIsadmin(username === "Ruanb");
   }, [username, setIsadmin]);
+
+  useEffect(() => {
+    console.log(cartitems);
+  }, [cartitems]);
+
+  const Addtocart = (item) => {
+    setCartitems(prevItems => [...prevItems, item]);
+  };
 
   return (
     <div>
@@ -31,7 +39,7 @@ const Dashboard = () => {
               <p>{order.Description}</p>
               <img src={order.Img} alt={order.id} />
               <p id='price'>Preço: R${order.Price},00</p>
-              <Button childreen='Comprar' />
+              <Button onClick={() => Addtocart(order)} childreen='Comprar' />
             </div>
           ))}
         </Product>

@@ -1,26 +1,45 @@
-import React, { useContext } from 'react'
-import {CartProducts,Orders} from './CartitemStyle'
-import img from '../../assets/logo.png'
-import Logincontext from '../../context/Logincontext'
+import React, { useContext } from 'react';
+import { CartProducts, Orders } from './CartitemStyle';
+import Logincontext from '../../context/Logincontext';
+import { IoClose } from "react-icons/io5";
+import { FaTrash } from "react-icons/fa";
+import Button from '../../components/button/Button';
 
 const Cartitem = () => {
+  const { cartitems, setCartitems } = useContext(Logincontext);
 
-const {Order} = useContext(Logincontext)
+  const removeItem = (itemToRemove) => {
+    setCartitems(prevItems => prevItems.filter(item => item !== itemToRemove));
+  };
+
   return (
     <CartProducts>
-        <h1>Seu carrinho</h1>
-        <Orders>
-            {Order.map((orders) =>{
-                <div key={orders.id}>
-                    <h1>{orders.Product}</h1>
-                    <p>{orders.Description}</p>
-                    <img src={orders.Img} alt="" />
-                    <p>Preço: {orders.Price}</p>
-                </div>
-            })}
+      <div className='mycart'>
+        <h1>Meu carrinho</h1>
+        <IoClose id='xmark' />
+      </div>
+      {cartitems.map((item, index) => (
+        <Orders key={index}>
+          <div>
+            <img src={item.Img} alt="" />
+          </div>
+          <div className='titleandprice'>
+            <h1>{item.Product}</h1>
+            <p>{item.Price}</p>
+          </div>
+          <div className='numitens'>
+            <input type="text" />
+          </div>
+          <div className='removeiten'>
+            <FaTrash id='trash' onClick={() => removeItem(item)} />
+          </div>
+          <div className='finisbuy'>
+            <Button childreen='Finalizar compra'/>
+          </div>
         </Orders>
+      ))}
     </CartProducts>
-  )
-}
+  );
+};
 
-export default Cartitem
+export default Cartitem;
