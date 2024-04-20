@@ -26,6 +26,7 @@ const Cartitem = () => {
           <div className='titleandprice'>
             <h1>{item.Product}</h1>
             <p>{item.Price}</p>
+            <p></p>
           </div>
           <div className='numitens'>
             <input type="text" />
