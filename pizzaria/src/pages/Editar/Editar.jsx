@@ -5,6 +5,8 @@ import Button from '../../components/button/Button';
 import axios from 'axios'; 
 import Correto from '../../assets/Correto.png';
 import { useNavigate } from 'react-router-dom';
+import { IoMdArrowRoundBack } from "react-icons/io";
+
 
 const Editar = () => {
   const [id, setId] = useState('');
@@ -53,6 +55,8 @@ const Editar = () => {
 
   return (
     <ContainerEditar>
+      <IoMdArrowRoundBack id='back' onClick={() => navigate('/admin')} />
+
       <h1>Editar Pedidos</h1>
       <form>
         <Inputsedit>

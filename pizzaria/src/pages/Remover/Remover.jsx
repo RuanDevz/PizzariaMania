@@ -5,6 +5,8 @@ import Button from '../../components/button/Button';
 import axios from 'axios';
 import Correto from '../../assets/Correto.png';
 import { useNavigate } from 'react-router-dom';
+import { IoMdArrowRoundBack } from "react-icons/io";
+
 
 const Remover = () => {
   const [id, setId] = useState('');
@@ -49,7 +51,7 @@ const Remover = () => {
   };
 
   const Yes = () => {
-    axios.delete(`http://localhost:3001/order/${id}`)
+    axios.delete(`https://pizzariamania3.onrender.com/order/${id}`)
       .then((response) => {
         setSuccessMessage(response.data.message);
         closeModalAndRedirect();
@@ -90,6 +92,7 @@ const Remover = () => {
         </div>
       ) : (
         <div>
+          <IoMdArrowRoundBack id='back' onClick={() => navigate('/admin')} />
           <h1>Remover</h1>
           <ContainerInput>
             <div className="input-container">

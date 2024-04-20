@@ -9,7 +9,7 @@ import { FaMinus } from "react-icons/fa";
 import { IoMdAdd } from "react-icons/io";
 
 const Cartitem = () => {
-  const { cartitems, setCartitems, setModalvisible, count, setCount } = useContext(Logincontext);
+  const { cartitems, setCartitems, setModalvisible, modalvisible } = useContext(Logincontext);
   const [totalPrice, setTotalPrice] = useState(0);
 
   const removeItem = (itemToRemove) => {
@@ -20,27 +20,32 @@ const Cartitem = () => {
     setModalvisible(false);
   };
 
-  const incrementCount = () => {
-    setCount(count + 1);
-  };
+  const addToCart = (item) => {
+    const existingItem = cartitems.find(cartItem => cartItem.Product === item.Product);
 
-  const decrementCount = () => {
-    if (count > 0) {
-      setCount(count - 1);
+    if (existingItem) {
+      setCartitems(prevItems =>
+        prevItems.map(cartItem =>
+          cartItem.Product === item.Product ? { ...cartItem, quantity: cartItem.quantity + 1 } : cartItem
+        )
+      );
+    } else {
+      setCartitems(prevItems => [...prevItems, { ...item, quantity: 1 }]);
+    }
+
+    if (!modalvisible) {
+      setModalvisible(true);
     }
   };
 
+
+
   useEffect(() => {
     const calculateTotalPrice = () => {
-      let sum = 0;
-      cartitems.forEach(item => {
-        sum += item.Price;
-      });
-      return sum;
+      return cartitems.reduce((sum, item) => sum + item.Price * item.quantity, 0);
     };
-
     setTotalPrice(calculateTotalPrice());
-  }, [cartitems, incrementCount ]);
+  }, [cartitems]);
 
   return (
     <CartProducts>
@@ -58,9 +63,15 @@ const Cartitem = () => {
             <p>R$ {item.Price}</p>
           </div>
           <div className='numitens'>
-            <FaMinus id='minus' onClick={decrementCount}/>
-            <p>{count}</p>
-            <IoMdAdd id='max' onClick={incrementCount} />
+            <FaMinus id='minus' onClick={() => setCartitems(prevItems =>
+              prevItems.map(cartItem =>
+                cartItem.Product === item.Product && cartItem.quantity > 1
+                  ? { ...cartItem, quantity: cartItem.quantity - 1 }
+                  : cartItem
+              )
+            )}/>
+            <p>{item.quantity}</p>
+            <IoMdAdd id='max' onClick={() => addToCart(item)} />
           </div>
           <div className='removeiten'>
             <FaTrash id='trash' onClick={() => removeItem(item)} />

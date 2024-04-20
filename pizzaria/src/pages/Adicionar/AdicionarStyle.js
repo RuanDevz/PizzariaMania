@@ -5,7 +5,14 @@ export const ContainerCreate = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  
+  #back{
+  position: absolute;
+  left: 100px;
+  top: 50px;
+  font-size: 3em;
+  color: #ff5b00;
+  cursor: pointer;
+}
   h1{
     margin-top: 30px;
   };

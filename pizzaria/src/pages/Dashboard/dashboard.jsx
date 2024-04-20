@@ -6,10 +6,9 @@ import Button from '../../components/button/Button';
 import Logincontext from '../../context/Logincontext';
 import Cart from '../../components/Cart/Cart';
 import Header from '../../components/header/Header';
-import { IoMdTrendingUp } from 'react-icons/io';
 
 const Dashboard = () => {
-  const { setOrder, Order, username, isadmin, setIsadmin, cartitems, setCartitems,modalvisible, setModalvisible, count, setCount} = useContext(Logincontext);
+  const { setOrder, Order, username, setIsadmin, setCartitems, modalvisible, setModalvisible, cartitems } = useContext(Logincontext);
 
   useEffect(() => {
     axios.get("https://pizzariamania3.onrender.com/order").then((response) => {
@@ -21,25 +20,35 @@ const Dashboard = () => {
     setIsadmin(username === "Ruanb");
   }, [username, setIsadmin]);
 
-  useEffect(() => {
-    console.log(cartitems);
-  }, [cartitems]);
+const addToCart = (item) => {
+  const existingItem = cartitems.find(cartItem => cartItem.Product === item.Product);
 
-  const Addtocart = (item) => {
-    setCartitems(prevItems => [...prevItems, item]);
-    if(modalvisible){
-      modalvisible(false)
-    }else{
-      setModalvisible(true)
+  if (existingItem) {
+    if (existingItem.quantity) {
+      setCartitems(prevItems =>
+        prevItems.map(cartItem =>
+          cartItem.Product === item.Product ? { ...cartItem, quantity: cartItem.quantity + 1 } : cartItem
+        )
+      );
+    } else {
+      return;
     }
-  };
+  } else {
+
+    setCartitems(prevItems => [...prevItems, { ...item, quantity: 1 }]);
+  }
+  
+  if (!modalvisible) {
+    setModalvisible(true);
+  }
+};
 
 
   return (
     <div>
       <Header />
       <DashboardContainer>
-        <Cart/>
+        <Cart />
         <h1>Bem vindo a Pizzaria Mania, <span id='name'>{username}</span>!</h1>
         <h1>Mais pedidos</h1>
         <Product>
@@ -49,7 +58,7 @@ const Dashboard = () => {
               <p>{order.Description}</p>
               <img src={order.Img} alt={order.id} />
               <p id='price'>Preço: R${order.Price},00</p>
-              <Button onClick={() => Addtocart(order)} children='Comprar' />
+              <Button onClick={() => addToCart(order)} children='Comprar' />
             </div>
           ))}
         </Product>

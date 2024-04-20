@@ -10,6 +10,14 @@ export const ContainerEditar = styled.div`
     margin-top: 20px;
     padding-bottom: 40px;
   }
+  #back{
+  position: absolute;
+  left: 100px;
+  top: 50px;
+  font-size: 3em;
+  color: #ff5b00;
+  cursor: pointer;
+}
 `;
 
 export const Inputsedit = styled.div`

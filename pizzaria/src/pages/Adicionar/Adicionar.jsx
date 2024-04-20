@@ -5,6 +5,8 @@ import Button from '../../components/button/Button';
 import axios from 'axios';
 import Correto from '../../assets/Correto.png'
 import {useNavigate} from 'react-router-dom'
+import { IoMdArrowRoundBack } from "react-icons/io";
+
 
 const Adicionar = () => {
   const [product, setProduct] = useState('');
@@ -65,6 +67,7 @@ const Adicionar = () => {
         </Sucesscreateorder>
       ): (
       <div>
+        <IoMdArrowRoundBack id='back' onClick={() => navigate('/admin')} />
       <h1>Criar novo produto</h1>
       <Containerdiv>
         <div className="input-container">

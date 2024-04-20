@@ -11,6 +11,27 @@ h1{
     font-size: 2.5em;
     padding-bottom: 40px;
 }
+
+@media only screen and (min-width: 1024px){
+    .sc-fLseNd{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    gap: 30px;
+    }
+}
+
+#back{
+  position: absolute;
+  left: 100px;
+  top: 50px;
+  font-size: 3em;
+  color: #ff5b00;
+  cursor: pointer;
+}
 `
 
 export const Products = styled.div`
@@ -41,5 +62,6 @@ p{
     box-shadow: box-shadow: 0px 2px 13px 0px rgba(0,0,0,0.75);
 -webkit-box-shadow: 0px 2px 13px 0px rgba(0,0,0,0.75);
 -moz-box-shadow: 0px 2px 13px 0px rgba(0,0,0,0.75);;
+
 }
 `

@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 export const CartProducts = styled.div`
-
 body{
   overflow-y: hidden;
 }
@@ -10,6 +9,8 @@ body{
   align-items: center;
   flex-direction: column;
   max-width: 380px;
+  z-index: -1;
+  padding: 0px 20px;
 
   .mycart {
     display: flex;
@@ -77,6 +78,7 @@ box-shadow: 0px 3px 14px -7px rgba(0,0,0,0.75);;
   }
   #trash{
     color: white;
+    cursor: pointer;
   }
 
   .finisbuy{
