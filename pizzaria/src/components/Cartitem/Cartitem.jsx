@@ -60,12 +60,7 @@ const Cartitem = () => {
           </div>
           <div className='titleandprice'>
             <h1>{item.Product}</h1>
-<<<<<<< HEAD
-            <p>{item.Price}</p>
-            <p></p>
-=======
             <p>R$ {item.Price}</p>
->>>>>>> novo-ramo
           </div>
           <div className='numitens'>
             <FaMinus id='minus' onClick={() => setCartitems(prevItems =>
