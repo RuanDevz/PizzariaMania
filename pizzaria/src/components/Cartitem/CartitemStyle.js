@@ -1,11 +1,16 @@
 import styled from 'styled-components'
 
 export const CartProducts = styled.div`
+body{
+  overflow-y: hidden;
+}
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  max-width: 330px;
+  max-width: 380px;
+  z-index: -1;
+  padding: 0px 20px;
 
   .mycart {
     display: flex;
@@ -44,7 +49,7 @@ export const Orders = styled.div`
 box-shadow: 0px 3px 14px -7px rgba(0,0,0,0.75);;
 
   img {
-    width: 50px;
+    width: 80px;
   }
 
   h1 {
@@ -58,10 +63,10 @@ box-shadow: 0px 3px 14px -7px rgba(0,0,0,0.75);;
     flex-direction: column;
   }
 
-  .numitens input{
-    width: 30px;
-    height: 30px;
-    text-indent: 9px;
+  .numitens{
+    display: flex;
+    align-items: center;
+    gap: 15px;
   }
 
   .removeiten{
@@ -73,6 +78,7 @@ box-shadow: 0px 3px 14px -7px rgba(0,0,0,0.75);;
   }
   #trash{
     color: white;
+    cursor: pointer;
   }
 
   .finisbuy{
@@ -80,4 +86,32 @@ box-shadow: 0px 3px 14px -7px rgba(0,0,0,0.75);;
     bottom: 0;
     margin-bottom: 10px;
   }
+
+  .totalprice{
+
+  }
+
+  P{
+    color: #8e8e8e;
+  }
+
+  #minus{
+    cursor: pointer;
+    color: red;
+  }
+
+  #max{
+    cursor: pointer;
+    color: green;
+  }
+`
+
+export const Finish = styled.div`
+position: absolute;
+bottom: 0;
+margin-bottom: 20px;
+
+h2{
+  text-align: center;
+}
 `

@@ -6,6 +6,15 @@ justify-content: center;
 align-items: center;
 flex-direction: column;
 
+#back{
+  position: absolute;
+  left: 100px;
+  top: 50px;
+  font-size: 3em;
+  color: #ff5b00;
+  cursor: pointer;
+}
+
 .confirmremoveproduct{
   display: flex;
   justify-content: center;
@@ -35,7 +44,7 @@ flex-direction: column;
 }
 
 h1{
-    margin-top: 50px;
+    margin-top: 200px;
     max-width: 300px;
     text-align: center;
 }

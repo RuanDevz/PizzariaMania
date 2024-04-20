@@ -1,9 +1,12 @@
+/* eslint-disable react/no-children-prop */
 import React, { useEffect, useState } from 'react';
 import { ContainerEditar, Inputsedit,Successupdatedorder } from './EditarStyle';
 import Button from '../../components/button/Button';
 import axios from 'axios'; 
 import Correto from '../../assets/Correto.png';
 import { useNavigate } from 'react-router-dom';
+import { IoMdArrowRoundBack } from "react-icons/io";
+
 
 const Editar = () => {
   const [id, setId] = useState('');
@@ -52,7 +55,10 @@ const Editar = () => {
 
   return (
     <ContainerEditar>
+      <IoMdArrowRoundBack id='back' onClick={() => navigate('/admin')} />
+
       <h1>Editar Pedidos</h1>
+      <p></p>
       <form>
         <Inputsedit>
         {updated ?(
@@ -119,7 +125,7 @@ const Editar = () => {
                 <div className="highlight"></div>
                 {error && <p id='error'>{error}</p>}
                 <div className='button'>
-                  <Button onClick={handleSubmit} childreen='Atualizar Pedido' type="button" />
+                  <Button onClick={handleSubmit} children='Atualizar Pedido' type="button" />
                 </div>
               </div>
             </div>

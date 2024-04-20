@@ -1,21 +1,18 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { ContainerHeader } from './HeaderStyle';
+import React, { useState, useEffect } from 'react';
+import { ContainerHeader } from './HeaderstartStyle';
 import logo from '../../assets/logo.png';
 import { LuMenu } from 'react-icons/lu';
 import { IoMdClose } from 'react-icons/io';
 import { Link, useNavigate } from 'react-router-dom'
 import { FaHome } from "react-icons/fa";
+import { GrLogin } from "react-icons/gr";
+import { FaUserPlus } from "react-icons/fa6";
 import { FaShoppingCart } from "react-icons/fa";
-import Logincontext from '../../context/Logincontext';
-import Input from '../Inputs/Input';
-import { FaRegUser } from "react-icons/fa";
 
 
-
-const Header = () => {
+const Headerstart = () => {
   const [menuactive, setMenuactive] = useState(true);
   const navigate = useNavigate();
-  const {setModalvisible} = useContext(Logincontext)
 
   const showMenu = () => {
     setMenuactive((prevMenuActive) => !prevMenuActive);
@@ -39,10 +36,6 @@ const Header = () => {
     };
   }, []);
 
-  const Openmodal = () =>{
-    setModalvisible((prevModalActive) => !prevModalActive)
-  }
-
   return (
     <ContainerHeader>
       <div className='logo'>
@@ -54,14 +47,17 @@ const Header = () => {
           <>
             <IoMdClose className='menubar' onClick={showMenu} />
             <ul className='menuoptions'>
-              <div>
-                
+              <div onClick={() => navigate('/')} className='options'>
+                <FaHome />
+                <li>Inicio</li>
               </div>
-              <div onClick={Openmodal} className='options'>
-              <FaShoppingCart />
+              <div onClick={() => navigate('/login')} className='options'>
+                <GrLogin />
+                <li>Entrar</li>
               </div>
-              <div id='user'>
-                <FaRegUser />
+              <div onClick={() => navigate('/register')} className='options'>
+                <FaUserPlus />
+                <li>Cadastrar</li>
               </div>
             </ul>
           </>
@@ -73,4 +69,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default Headerstart;

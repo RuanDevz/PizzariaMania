@@ -53,4 +53,18 @@ h2{
     align-items: center;
     flex-direction: column;
 }
+
+@media only screen and (min-width: 1024px){
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 250px;
+    transition: transform 2s ease;
+}
+
+.icon:hover{
+    transform: scale(1.2);
+    transition: transform 1s ease;
+}
 `
