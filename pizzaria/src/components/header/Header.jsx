@@ -3,23 +3,35 @@ import { ContainerHeader } from './HeaderStyle';
 import logo from '../../assets/logo.png';
 import { LuMenu } from 'react-icons/lu';
 import { IoMdClose } from 'react-icons/io';
-import { Link, useNavigate } from 'react-router-dom'
-import { FaHome } from "react-icons/fa";
-import { FaShoppingCart } from "react-icons/fa";
+import { Link, useNavigate } from 'react-router-dom';
+import { FaShoppingCart, FaRegUser, } from "react-icons/fa";
+import { GrConfigure } from "react-icons/gr";
+
 import Logincontext from '../../context/Logincontext';
-import Input from '../Inputs/Input';
-import { FaRegUser } from "react-icons/fa";
-
-
+import axios from 'axios';
 
 const Header = () => {
   const [menuactive, setMenuactive] = useState(true);
   const navigate = useNavigate();
-  const {setModalvisible} = useContext(Logincontext)
+  const { setModalvisible, isadmin, setIsadmin, username } = useContext(Logincontext);
 
   const showMenu = () => {
     setMenuactive((prevMenuActive) => !prevMenuActive);
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('https://pizzariamania3.onrender.com/user/login');
+        const isAdmin = response.data.isAdmin;
+        setIsadmin(isAdmin);
+      } catch (error) {
+        console.error('Erro ao verificar se o usuário é administrador:', error);
+      }
+    };
+    
+    fetchData();
+  }, []);
 
   useEffect(() => {
     const handleResize = () => {
@@ -31,7 +43,6 @@ const Header = () => {
     };
 
     handleResize();
-
     window.addEventListener('resize', handleResize); 
 
     return () => {
@@ -41,35 +52,41 @@ const Header = () => {
 
   const Openmodal = () =>{
     setModalvisible((prevModalActive) => !prevModalActive)
-  }
+  };
 
   return (
-    <ContainerHeader>
-      <div className='logo'>
-        <img src={logo} alt='logo' />
-        <Link to='/'><h1>Mania</h1></Link>
-      </div>
-      <div className='menu'>
-        {menuactive ? (
-          <>
-            <IoMdClose className='menubar' onClick={showMenu} />
-            <ul className='menuoptions'>
-              <div>
-                
-              </div>
-              <div onClick={Openmodal} className='options'>
-              <FaShoppingCart />
-              </div>
-              <div id='user'>
-                <FaRegUser />
-              </div>
-            </ul>
-          </>
-        ) : (
-          <LuMenu className='menubar' onClick={showMenu} />
-        )}
-      </div>
-    </ContainerHeader>
+    <>
+      {isadmin ? (
+        <h1>Você é admin</h1>
+      ) : (
+        <ContainerHeader>
+          <div className='logo'>
+            <img src={logo} alt='logo' />
+            <Link to='/'><h1>Mania</h1></Link>
+          </div>
+          <div className='menu'>
+            {menuactive ? (
+              <>
+                <IoMdClose className='menubar' onClick={showMenu} />
+                <ul className='menuoptions'>
+                  <li onClick={Openmodal} className='options'>
+                    <FaShoppingCart />
+                  </li>
+                  <li id='user'>
+                    <FaRegUser />
+                  </li>
+                  <li>
+                    <GrConfigure />
+                  </li>
+                </ul>
+              </>
+            ) : (
+              <LuMenu className='menubar' onClick={showMenu} />
+            )}
+          </div>
+        </ContainerHeader>
+      )}
+    </>
   );
 };
 

@@ -16,12 +16,6 @@ const Dashboard = () => {
     });
   }, []);
 
-  useEffect(() => {
-    axios.get('https://pizzariamania3.onrender.com/user/login',{
-      isAdmin: isadmin
-    })
-  }, []);
-
 const addToCart = (item) => {
   const existingItem = cartitems.find(cartItem => cartItem.Product === item.Product);
 
@@ -48,9 +42,6 @@ const addToCart = (item) => {
 
   return (
     <div>
-      {isadmin ? (
-        <h1>Você é admin</h1>
-      ):(
         <>
       <Header />
       <DashboardContainer>
@@ -70,7 +61,6 @@ const addToCart = (item) => {
         </Product>
       </DashboardContainer>
         </>
-      )}
     </div>
   );
 };
