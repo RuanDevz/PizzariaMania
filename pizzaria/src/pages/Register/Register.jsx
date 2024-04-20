@@ -5,7 +5,8 @@ import Button from '../../components/button/Button.jsx';
 import Correto from '../../assets/Correto.png';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import pizzaiolo from '../../assets/pizzaiolo.png'
+import Headerstart from '../../components/Headerstart/Headerstart.jsx';
+import { IoMdArrowRoundBack } from "react-icons/io";
 
 const Register = () => {
   const [username, setUsername] = useState('');
@@ -71,6 +72,7 @@ const Register = () => {
 
   return (
     <RegisterContainer>
+      <IoMdArrowRoundBack id='back' onClick={() => navigate('/')} />
       <h1>Cadastrar usuário</h1>
       {isRegistered ? (
         <SucessMessage id='success'>
@@ -111,7 +113,7 @@ const Register = () => {
 
         </form>
       )}
-      {!isRegistered && <Button childreen='Cadastrar' onClick={handleClick} />}
+      {!isRegistered && <Button children='Cadastrar' onClick={handleClick} />}
     </RegisterContainer>
   );
 };

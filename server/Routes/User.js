@@ -64,4 +64,25 @@ router.get('/login', async (req,res) =>{
     res.status(200).json(users)
 })
 
+router.put('/login/:id', async (req, res) => {
+  const userUpdated = req.body;
+  const { id } = req.params;
+
+  try {
+    const user = await User.findByPk(id);
+    
+    if (!user) {
+      return res.status(404).json({ msg: "Usuário não encontrado." });
+    }
+
+    await user.update(userUpdated); 
+
+    res.status(200).json({ msg: "Usuário atualizado", user: userUpdated }); 
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ msg: "Erro ao atualizar o usuário." });
+  }
+});
+
+
 module.exports = router

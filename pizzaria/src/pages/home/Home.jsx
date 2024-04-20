@@ -5,11 +5,13 @@ import { ContainerHome,TitleHomepage } from './HomeStyle'
 import pizzaiolo from '../../assets/pizzaiolo.png'
 import Button from '../../components/button/Button'
 import {Link} from 'react-router-dom'
+import Headerstart from '../../components/Headerstart/Headerstart'
 
 
 const Home = () => {
   return (
     <div>
+      <Headerstart/>
       <TitleHomepage>Pizzaria Mania</TitleHomepage>
     <ContainerHome>
         <div>

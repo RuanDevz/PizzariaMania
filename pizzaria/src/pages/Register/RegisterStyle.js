@@ -8,6 +8,15 @@ export const RegisterContainer = styled.div`
     flex-direction: column;
     gap: 50px;
 
+    #back{
+            position: absolute;
+            left: 100px;
+            top: 50px;
+            font-size: 3em;
+            color: #ff5b00;
+            cursor: pointer;
+}
+
     .front{
         width: 350px;
     }
