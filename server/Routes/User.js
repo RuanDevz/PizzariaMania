@@ -49,18 +49,21 @@ router.post('/login', async (req,res) =>{
 })
 
 router.post('/user/login', async (req, res) => {
+  const { Username, Password } = req.body;
+  const user = await User.findOne({ where: { username: Username } });
 
-    const user = await User.findOne({ where: { username: req.body.Username } });
-  
-    if (!user || !bcrypt.compareSync(req.body.Password, user.Password)) {
-      return res.status(401).json({ error: 'Credenciais inválidas' });
-    }
-    res.status(200).json({ id: user.id, username: user.Username });
-  });
+  if (!user || !bcrypt.compareSync(Password, user.Password)) {
+    return res.status(401).json({ error: 'Credenciais inválidas' });
+  }
+
+  res.status(200).json({ user });
+});
+
 
 router.get('/login', async (req,res) =>{
-
-    const users = await User.findAll()
+  const users = await User.findAll({
+    attributes: ['id', 'Username', 'isAdmin'],
+  });
     res.status(200).json(users)
 })
 

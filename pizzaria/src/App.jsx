@@ -20,10 +20,10 @@ const App = () => {
   const [error, setError] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [Order, setOrder] = useState([])
-  const [isadmin, setIsadmin] = useState(false)
   const [cartitems, setCartitems] = useState([])
   const [modalvisible, setModalvisible] = useState(false)
   const [count, setCount] = useState(1)
+  const [getuser, setGetuser] = useState(null);
 
   return (
     <Logincontext.Provider
@@ -33,10 +33,10 @@ const App = () => {
         error, setError,
         setOrder,Order,
         isLoggedIn, setIsLoggedIn,
-        isadmin, setIsadmin,
         cartitems, setCartitems,
         modalvisible, setModalvisible,
-        count, setCount
+        count, setCount,
+        getuser, setGetuser
       }}
     >
       <Router>

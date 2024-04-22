@@ -86,5 +86,9 @@ a{
     cursor: pointer;
 }
 
+#config{
+    cursor: pointer;
+}
+
 }
 `

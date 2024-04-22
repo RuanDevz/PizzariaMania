@@ -13,35 +13,40 @@ import Headerstart from '../../components/Headerstart/Headerstart';
 
 const Login = () => {
   const navigate = useNavigate();
-  const { setError, error, username, setUsername, password, setPassword } = useContext(Logincontext);
-  const [loading, setLoading] = useState(false); // Fix: Change to const [loading, setLoading] = useState(false)
+  const { setError, error, username, setUsername, password, setPassword, getuser, setGetuser} = useContext(Logincontext);
+  const [loading, setLoading] = useState(false);
 
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
     setLoading(true); 
-
+  
     if (username.trim() === '' || password.trim() === '') {
       setError('Preencha os campos corretamente');
       setLoading(false); 
       return;
     }
-
+  
     try {
-      const response = await axios.post('https://pizzariamania3.onrender.com/user/login', {
-        Username: username,
-        Password: password,
-      });
+      const response = await axios.get('https://pizzariamania3.onrender.com/user/login');
+      const users = response.data;
+      
+      const user = users.find(user => user.Username === username);
 
-      sessionStorage.setItem('accessToken', response.data);
-
-      const errormsg = response.data.error;
-
-      if (errormsg) {
-        setError(errormsg);
-      } else {
-        setError('');
-        navigate('/dashboard');
+  
+      if (!user) {
+        setError('Usuário não encontrado');
+        setLoading(false)
+      }else{
+        setGetuser(user)
       }
+
+      console.log(getuser)
+  
+      sessionStorage.setItem('accessToken', response.data.accessToken);
+      sessionStorage.setItem('user', JSON.stringify(user));
+  
+      setError('');
+      navigate('/dashboard');
     } catch (error) {
       setError('Falha ao logar, por favor, verifique suas credenciais');
       console.error('Login error:', error);
@@ -49,7 +54,7 @@ const Login = () => {
       setLoading(false); 
     }
   };
-
+  
   return (
     <ContainerLogin>
       {loading ? (
