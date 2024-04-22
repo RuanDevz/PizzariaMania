@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { ContainerHeader } from './HeaderStyle';
+import { ContainerHeader,Configuser } from './HeaderStyle';
 import logo from '../../assets/logo.png';
 import { LuMenu } from 'react-icons/lu';
 import { IoMdClose } from 'react-icons/io';
@@ -13,7 +13,7 @@ import axios from 'axios';
 const Header = () => {
   const [menuactive, setMenuactive] = useState(true);
   const navigate = useNavigate();
-  const { setModalvisible, username, getuser} = useContext(Logincontext);
+  const { setModalvisible, username, getuser,useropen, setUseropen} = useContext(Logincontext);
 
   const admin = getuser.isAdmin
 
@@ -21,6 +21,10 @@ const Header = () => {
     setMenuactive((prevMenuActive) => !prevMenuActive);
   };
 
+  const Useropen = () =>{
+    setUseropen((prevUserOpen) => !prevUserOpen)
+    console.log(useropen)
+  }
 
   const Openmodal = () => {
     setModalvisible((prevModalActive) => !prevModalActive);
@@ -43,9 +47,20 @@ const Header = () => {
                 <li onClick={Openmodal} className='options'>
                   <FaShoppingCart />
                 </li>
-                <li id='user'>
+                <li onClick={Useropen} id='user'>
                   <FaRegUser />
                 </li>
+                {useropen ? (
+                <Configuser>
+                  <Link to='/minhaconta'><li>Minha conta</li></Link>
+                  <Link to='meuspedidos'><li>Meus pedidos</li></Link>
+                  <Link to='pagamentos'><li>Pagamentos</li></Link>
+                  <Link to='meuendereco'><li>Meu endereço</li></Link>
+                  <Link to='/login'><li>Sair</li></Link>
+                </Configuser>
+                ):(
+                  null
+                )}
                 {admin && <li id='config' onClick={() => navigate('/admin')}><GrConfigure/></li>}
               </ul>
             </>

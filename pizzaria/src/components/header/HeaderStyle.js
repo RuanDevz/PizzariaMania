@@ -92,3 +92,24 @@ a{
 
 }
 `
+
+export const Configuser = styled.div`
+text-align: center;
+white-space: nowrap;
+position: absolute;
+background-color: #fff;
+top: 0;
+transform: translateX(40%);
+margin-top: 50px;
+
+li{
+    font-size: 0.9em;
+    cursor: pointer;
+    padding: 10px 5px;
+
+    &:hover{
+        color: #fff;
+        background-color: #ff5b00;
+    }
+}
+`

@@ -12,6 +12,7 @@ import Editar from './pages/Editar/Editar';
 import Remover from './pages/Remover/Remover';
 import Listadeprodutos from './pages/Lista de Produtos/Listadeprodutos';
 import Headerstart from './components/Headerstart/Headerstart';
+import Minhaconta from './pages/Minhaconta/Minhaconta';
 
 
 const App = () => {
@@ -24,6 +25,7 @@ const App = () => {
   const [modalvisible, setModalvisible] = useState(false)
   const [count, setCount] = useState(1)
   const [getuser, setGetuser] = useState(null);
+  const [useropen, setUseropen] = useState(false)
 
   return (
     <Logincontext.Provider
@@ -36,7 +38,8 @@ const App = () => {
         cartitems, setCartitems,
         modalvisible, setModalvisible,
         count, setCount,
-        getuser, setGetuser
+        getuser, setGetuser,
+        useropen, setUseropen
       }}
     >
       <Router>
@@ -52,6 +55,7 @@ const App = () => {
             <Route path='/admin/Listadeprodutos' element={<Listadeprodutos />}></Route>
             <Route path='/admin/editar' element={<Editar/>}></Route>
             <Route path='/admin/remover' element={<Remover/>}></Route>
+            <Route path='/minhaconta' element={<Minhaconta/>}></Route>
           </Routes>
         </div>
       </Router>
