@@ -52,9 +52,9 @@ const Register = () => {
     }
 
     axios
-      .post('https://pizzariamania3.onrender.com/user', {
-        Username: username,
-        Password: password,
+      .post('https://backendpizzaria.onrender.com/user/register', {
+        username: username,
+        password: password,
       })
       .then((response) => {
         if(response.data.error){
@@ -62,7 +62,6 @@ const Register = () => {
           return
         }
         setIsRegistered(true);
-        console.log(response.data);
       })
       .catch((error) => {
         console.error('Erro ao cadastrar usuário:', error);

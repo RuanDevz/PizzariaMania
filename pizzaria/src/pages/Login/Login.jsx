@@ -8,88 +8,75 @@ import axios from 'axios';
 import Logincontext from '../../context/Logincontext';
 import Pizzaiolo from '../../assets/pizzaiolo.png';
 import Loading from '../../components/Loading/Loading';
-import Header from '../../components/header/Header'
-import Headerstart from '../../components/Headerstart/Headerstart';
 
 const Login = () => {
   const navigate = useNavigate();
-  const { setError, error, username, setUsername, password, setPassword, getuser, setGetuser} = useContext(Logincontext);
+  const { setError, error, username, setUsername, password, setPassword, setGetuser } = useContext(Logincontext);
   const [loading, setLoading] = useState(false);
 
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true); 
-  
+    setLoading(true);
+    
     if (username.trim() === '' || password.trim() === '') {
       setError('Preencha os campos corretamente');
-      setLoading(false); 
+      setLoading(false);
       return;
     }
-  
-    try {
-      const response = await axios.get('https://pizzariamania3.onrender.com/user/login');
-      const users = response.data;
+      const response = await axios.post('https://backendpizzaria.onrender.com/user/auth', { username, password });
       
-      const user = users.find(user => user.Username === username);
-
+      const { accessToken, user } = response.data;
+      const { id, username: name, isAdmin } = user;
   
-      if (!user) {
+      if (!name) {
         setError('Usuário não encontrado');
-        setLoading(false)
-      }else{
-        setGetuser(user)
+        setLoading(false);
+        return;
       }
-
-      console.log(getuser)
   
-      sessionStorage.setItem('accessToken', response.data.accessToken);
-      sessionStorage.setItem('user', JSON.stringify(user));
+      const userData = { id, name, isAdmin };
+      setGetuser(userData);
+  
+      sessionStorage.setItem('accessToken', accessToken);
+      sessionStorage.setItem('user', JSON.stringify(userData));
   
       setError('');
       navigate('/dashboard');
-    } catch (error) {
-      setError('Falha ao logar, por favor, verifique suas credenciais');
-      console.error('Login error:', error);
-    } finally {
-      setLoading(false); 
-    }
   };
   
+  
+
   return (
     <ContainerLogin>
       {loading ? (
-        <>
-          <Loading />
-        </>
+        <Loading />
       ) : (
-        <>
-          <form onSubmit={handleLoginSubmit}>
-            <h1>Login</h1>
-            <Input
-              type="text"
-              placeholder="Username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              htmlFor="login"
-              id="login"
-            />
-            <Input
-              type="password"
-              placeholder="Senha"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              htmlFor="password"
-              id="password"
-            />
-            {error && <p id="error">{error}</p>}
-            <Button className="Entrar" children='Entrar' type="submit" />
-            <div className="Join">
-              <Link to="/register" className="register">
-                Não possui uma conta?
-              </Link>
-            </div>
-          </form>
-        </>
+        <form onSubmit={handleLoginSubmit}>
+          <h1>Login</h1>
+          <Input
+            type="text"
+            placeholder="Username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            htmlFor="login"
+            id="login"
+          />
+          <Input
+            type="password"
+            placeholder="Senha"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            htmlFor="password"
+            id="password"
+          />
+          {error && <p id="error">{error}</p>}
+          <Button className="Entrar" children='Entrar' type="submit" />
+          <div className="Join">
+            <Link to="/register" className="register">
+              Não possui uma conta?
+            </Link>
+          </div>
+        </form>
       )}
       {!loading && (
         <div>

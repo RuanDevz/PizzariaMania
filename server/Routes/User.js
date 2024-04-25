@@ -4,6 +4,8 @@ const bcrypt = require('bcrypt')
 const {User} = require('../models')
 const {sign} = require('jsonwebtoken')
 
+
+// Cria o usuario
 router.post('/', async (req, res) => {
     try {
       const { Username, Password } = req.body;
@@ -28,7 +30,7 @@ router.post('/', async (req, res) => {
     }
   });
 
-
+// Loga o usuario
 router.post('/login', async (req,res) =>{
     const {Username, Password} = req.body
     const user = await User.findOne({where: {Username: Username}})
@@ -44,7 +46,7 @@ router.post('/login', async (req,res) =>{
 
         const accessToken = sign({username: user.Username, id: user.id}, "Tokenimportant")
 
-        res.json(accessToken)
+        res.json({msg: "Usuario logado"})
     })
 })
 
