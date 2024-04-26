@@ -25,20 +25,20 @@ const Login = () => {
     }
       const response = await axios.post('https://backendpizzaria.onrender.com/user/auth', { username, password });
       
-      const { accessToken, user } = response.data;
-      const { id, username: name, isAdmin } = user;
+      const accessToken = response.data.accessToken
+      const userData = response.data.user
+
+      setGetuser(userData)
   
-      if (!name) {
+      if (!userData) {
         setError('Usuário não encontrado');
         setLoading(false);
         return;
       }
   
-      const userData = { id, name, isAdmin };
-      setGetuser(userData);
   
       sessionStorage.setItem('accessToken', accessToken);
-      sessionStorage.setItem('user', JSON.stringify(userData));
+      sessionStorage.setItem('userData', JSON.stringify(userData));
   
       setError('');
       navigate('/dashboard');
