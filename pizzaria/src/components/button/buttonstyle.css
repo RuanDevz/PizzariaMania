@@ -10,6 +10,30 @@
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     margin-top: 35px;
   }
+
+  .pushable:disabled {
+  cursor: not-allowed;
+}
+
+.pushable:disabled .front {
+  background-color: #ccc;
+  color: #666; /* Altera a cor do texto para torná-lo menos proeminente */
+}
+
+.pushable:disabled .shadow {
+  background: hsl(226, 25%, 69%);
+}
+
+.pushable:disabled .edge {
+  background: linear-gradient(
+    to right,
+    hsl(0, 0%, 50%) 0%, /* Tom de cinza médio */
+    hsl(0, 0%, 60%) 8%, /* Tom mais claro de cinza */
+    hsl(0, 0%, 50%) 92%, /* Tom de cinza médio */
+    hsl(0, 0%, 40%) 100% /* Tom mais escuro de cinza */
+  );
+}
+
   
   .shadow {
     position: absolute;

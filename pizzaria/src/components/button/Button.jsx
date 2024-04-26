@@ -3,10 +3,10 @@ import './buttonstyle.css'
 
 
 // eslint-disable-next-line react/prop-types
-const Button = ({children, onClick}) => {
+const Button = ({children, onClick, disabled}) => {
     return (
       <div>
-      <button onClick={onClick} className="pushable">
+      <button disabled={disabled} onClick={onClick} className="pushable">
       <span className="shadow"></span>
       <span className="edge"></span>
       <span className="front">
