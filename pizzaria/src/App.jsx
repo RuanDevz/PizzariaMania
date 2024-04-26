@@ -26,6 +26,7 @@ const App = () => {
   const [count, setCount] = useState(1)
   const [getuser, setGetuser] = useState(null);
   const [useropen, setUseropen] = useState(false)
+  const [loading, setLoading] = useState(false);
 
   return (
     <Logincontext.Provider
@@ -39,7 +40,8 @@ const App = () => {
         modalvisible, setModalvisible,
         count, setCount,
         getuser, setGetuser,
-        useropen, setUseropen
+        useropen, setUseropen,
+        loading, setLoading
       }}
     >
       <Router>

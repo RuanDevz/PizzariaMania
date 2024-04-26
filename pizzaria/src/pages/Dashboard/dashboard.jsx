@@ -6,13 +6,16 @@ import Button from '../../components/button/Button';
 import Logincontext from '../../context/Logincontext';
 import Cart from '../../components/Cart/Cart';
 import Header from '../../components/header/Header';
+import Loading from '../../components/Loading/Loading';
 
 const Dashboard = () => {
-  const { setOrder, Order, username, setIsadmin,isadmin, setCartitems, modalvisible, setModalvisible, cartitems } = useContext(Logincontext);
+  const { setOrder, Order, username, setIsadmin,isadmin, setCartitems, modalvisible, setModalvisible, cartitems,loading,setLoading } = useContext(Logincontext);
 
   useEffect(() => {
+    setLoading(true)
     axios.get("https://pizzariamania3.onrender.com/order").then((response) => {
       setOrder(response.data);
+      setLoading(false)
     });
   }, []);
 
@@ -49,7 +52,11 @@ const addToCart = (item) => {
         <h1>Bem vindo a Pizzaria Mania, <span id='name'>{username}</span>!</h1>
         <h1>Mais pedidos</h1>
         <Product>
-          {Order.map((order) => (
+          {loading ? (
+            <Loading/>
+          ):(
+            <>
+             {Order.map((order) => (
             <div className='Product-item' key={order.id}>
               <h1>{order.Product}</h1>
               <p>{order.Description}</p>
@@ -58,6 +65,8 @@ const addToCart = (item) => {
               <Button onClick={() => addToCart(order)} children='Comprar' />
             </div>
           ))}
+            </>
+          )}
         </Product>
       </DashboardContainer>
         </>
