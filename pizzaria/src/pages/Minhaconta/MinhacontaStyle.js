@@ -9,7 +9,7 @@ padding-top: 200px;
 export const Options = styled.div`
 display: flex;
 flex-direction: column;
-gap: 30px;
+gap: 10px;
 background-color: #e8e8e8;
 max-width: 1200px;
 border-radius: 15px;
@@ -32,7 +32,6 @@ export const Container = styled.div`
 display: flex;
 justify-content: space-around;
 flex-direction: column;
-gap: 50px;
 `
 
 export const Order = styled.div`

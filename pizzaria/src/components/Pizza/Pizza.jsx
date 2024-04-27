@@ -36,6 +36,36 @@ const Pizza = () => {
                     </div>
                 </div>
             </div>
+            <div className='container_details'>
+            <div className='details'>
+                <h1>Big Details</h1>
+            </div>
+            <div>
+                <div className='total'>
+                    <p>Total</p>
+                    <p>R$ 180,00</p>
+                </div>
+                <div className='details-delivery'>
+                    <p>Taxa de entrega</p>
+                    <div className='details-delivery-promo'>
+                        <strike>R$ 19,00</strike>
+                        <p id='green'>GRÁTIS</p>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div className='desconto'>
+                <p>Desconto</p>
+                <span id='green'>-R$ 20,00</span>
+            </div>
+            <div className='taxas'>
+                <p>Taxas de mudanças</p>
+                <span>R$ 2,00</span>
+            </div>
+            <div className='pay'>
+                <p>A pagar</p>
+                <span>R$ 182,00</span>
+            </div>
         </div>
     );
 }
