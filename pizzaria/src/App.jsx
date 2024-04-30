@@ -27,6 +27,7 @@ const App = () => {
   const [getuser, setGetuser] = useState(null);
   const [useropen, setUseropen] = useState(false)
   const [loading, setLoading] = useState(false);
+  const [getcartitens, setGetcartitens] = useState([])
 
   return (
     <Logincontext.Provider
@@ -41,7 +42,8 @@ const App = () => {
         count, setCount,
         getuser, setGetuser,
         useropen, setUseropen,
-        loading, setLoading
+        loading, setLoading,
+        getcartitens, setGetcartitens
       }}
     >
       <Router>

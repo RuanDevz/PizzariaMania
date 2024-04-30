@@ -7,10 +7,12 @@ import { FaTrash } from "react-icons/fa";
 import Button from '../../components/button/Button';
 import { FaMinus } from "react-icons/fa";
 import { IoMdAdd } from "react-icons/io";
+import { useNavigate } from 'react-router-dom';
 
 const Cartitem = () => {
-  const { cartitems, setCartitems, setModalvisible, modalvisible } = useContext(Logincontext);
+  const { cartitems, setCartitems, setModalvisible, modalvisible, setGetcartitens,getcartitens  } = useContext(Logincontext);
   const [totalPrice, setTotalPrice] = useState(0);
+  const navigate = useNavigate()
 
   const removeItem = (itemToRemove) => {
     setCartitems(prevItems => prevItems.filter(item => item !== itemToRemove));
@@ -19,6 +21,7 @@ const Cartitem = () => {
   const closeModal = () => {
     setModalvisible(false);
   };
+
 
   const addToCart = (item) => {
     const existingItem = cartitems.find(cartItem => cartItem.Product === item.Product);
@@ -46,6 +49,11 @@ const Cartitem = () => {
     };
     setTotalPrice(calculateTotalPrice());
   }, [cartitems]);
+
+  const Buy = () => {
+    setGetcartitens({ pedidos: cartitems, value: totalPrice });
+    navigate('/minhaconta');
+  };
 
   return (
     <CartProducts>
@@ -83,7 +91,7 @@ const Cartitem = () => {
           <h2>Preço total: R${totalPrice}</h2>
         </div>
         <div className='finishBuy'>
-          <Button children='Finalizar compra'/>
+          <Button onClick={Buy} children='Finalizar compra'/>
         </div>
       </Finish>
     </CartProducts>

@@ -9,7 +9,7 @@ import Header from '../../components/header/Header';
 import Loading from '../../components/Loading/Loading';
 
 const Dashboard = () => {
-  const { setOrder, Order, username, setIsadmin,isadmin, setCartitems, modalvisible, setModalvisible, cartitems,loading,setLoading } = useContext(Logincontext);
+  const { setOrder, Order, username, setCartitems, modalvisible, setModalvisible, cartitems,loading,setLoading } = useContext(Logincontext);
 
   useEffect(() => {
     setLoading(true)

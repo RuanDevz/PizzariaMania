@@ -1,12 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Container, Options, Order, ContainerGeral } from './MinhacontaStyle';
 import minhaconta from './img/Users.png';
 import delivery from './img/Location.png';
 import pagamento from './img/Payment.png';
 import Pizza from '../../components/Pizza/Pizza';
+import Logincontext from '../../context/Logincontext';
 
 const Minhaconta = () => {
-  const [zoomLevel, setZoomLevel] = useState(80); // Estado para controlar o nível de zoom
+  const [zoomLevel] = useState(80);
+
+
 
   useEffect(() => {
     const setZoom = () => {
