@@ -9,7 +9,7 @@ O objetivo deste projeto foi aprender e praticar o desenvolvimento full-stack, d
 ## Funcionalidades
 
 - **Cadastro de Usuários:** Permite que os usuários se cadastrem na plataforma para realizar pedidos.
-- ![1](https://github.com/RuanDevz/pizzariamania3/assets/121466178/a6da0540-8d46-46cc-b0f0-19d31cd273f7)
+- ![2](https://github.com/RuanDevz/PizzariaMania/assets/121466178/bd559f33-f32a-462d-ac30-7894a2a3c994)
 - **Listagem de Pizzas:** Exibe as pizzas disponíveis no menu da pizzaria.
 - ![3](https://github.com/RuanDevz/pizzariamania3/assets/121466178/ac16190f-2caa-4832-b997-67d9b978feff)
 - **Realização de Pedidos:** Usuários autenticados podem realizar pedidos de pizzas.
