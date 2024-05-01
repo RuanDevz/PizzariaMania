@@ -20,4 +20,7 @@ O objetivo deste projeto foi aprender e praticar o desenvolvimento full-stack, d
 ### Pré-requisitos
 
 - Node.js e npm instalados globalmente.
-- Banco de dados PostgreSQL configurado (ou MySQL se preferir manter a configuração inicial). 
+- Banco de dados PostgreSQL configurado (ou MySQL se preferir manter a configuração inicial).
+
+- ## Deploy
+- https://pizzariamania3.vercel.app/
