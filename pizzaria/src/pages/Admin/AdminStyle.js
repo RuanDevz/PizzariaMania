@@ -35,14 +35,6 @@ h2{
     color: #4caf50;
 }
 
-#edit{
-    color: #007bff;
-}
-
-#remove{
-    color: #dc3545;
-}
-
 #list{
     color: #fd7e14;
 }

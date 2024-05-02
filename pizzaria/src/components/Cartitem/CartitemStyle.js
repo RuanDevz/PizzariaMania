@@ -109,7 +109,6 @@ box-shadow: 0px 3px 14px -7px rgba(0,0,0,0.75);;
 export const Finish = styled.div`
 position: absolute;
 bottom: 0;
-margin-bottom: 20px;
 
 h2{
   text-align: center;

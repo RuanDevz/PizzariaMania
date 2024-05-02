@@ -51,7 +51,6 @@ router.put('/:id', async (req, res) => {
   const { id } = req.params;
   const orderData = req.body;
 
-  try {
      let existingOrder = await Order.findByPk(id);
     if (!existingOrder) {
       return res.status(404).json({ message: "Pedido não foi encontrado" });
@@ -66,13 +65,8 @@ router.put('/:id', async (req, res) => {
     
 
     res.status(200).json({
-      message: "Pedido atualizado com sucesso!",
-      updatedOrder: existingOrder
+      message: "Pedido atualizado com sucesso!", existingOrder
     });
-  } catch (error) {
-    console.error("Erro ao editar pedido:", error);
-    res.status(500).json({ message: "Erro interno do servidor" });
-  }
 });
 
 router.delete('/:id', async (req, res) => {

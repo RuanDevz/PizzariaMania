@@ -36,9 +36,10 @@ h1{
 
 export const Products = styled.div`
 display: flex;
-justify-content: center;
+justify-content: space-between;
 align-items: center;
-flex-direction: column;
+flex-wrap: wrap;
+max-width: 1000px;
 
 img{
     width: 150px;
@@ -63,5 +64,24 @@ p{
 -webkit-box-shadow: 0px 2px 13px 0px rgba(0,0,0,0.75);
 -moz-box-shadow: 0px 2px 13px 0px rgba(0,0,0,0.75);;
 
+}
+
+.edit{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 200px;
+
+    #remove{
+        color: #dc3545;
+        font-size: 1.5em;
+        cursor: pointer;
+    }
+
+    #edit{
+    color: #007bff;
+    font-size: 1.5em;
+    cursor: pointer;
+}
 }
 `

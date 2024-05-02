@@ -7,6 +7,9 @@ const Pizza = () => {
     const { getcartitens, cartitems } = useContext(Logincontext);
     const { value, pedidos } = getcartitens;
 
+    const desconto = 20
+    const taxa = 2
+
     return (
         <div>
             <div className='containertitle'>
@@ -66,7 +69,7 @@ const Pizza = () => {
             </div>
             <div className='pay'>
                 <p>A pagar</p>
-                <span>R$ {(value - 20 + 2)},00</span>
+                <span>R$ {(value - desconto + taxa)},00</span>
             </div>
         </div>
     );

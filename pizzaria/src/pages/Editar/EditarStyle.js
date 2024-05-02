@@ -31,7 +31,7 @@ margin: -40px 0px;
   }
 
   .input {
-    font-size: 1.5em;
+    font-size: 1em;
     margin: 30px 0px;
     padding: 0.6em 1em;
     border: none;
@@ -39,7 +39,7 @@ margin: -40px 0px;
     background-color: #f8f8f8;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    max-width: 300px;
+    max-width: 500px;
     color: #333;
 
     &:hover {

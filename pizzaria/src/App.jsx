@@ -29,6 +29,17 @@ const App = () => {
   const [loading, setLoading] = useState(false);
   const [getcartitens, setGetcartitens] = useState([])
 
+
+  const [nomeProduto, setNomeProduto] = useState('');
+  const [descricaoProduto, setDescricaoProduto] = useState('');
+  const [urlImagem, setUrlImagem] = useState('');
+  const [precoProduto, setPrecoProduto] = useState('');
+
+
+  const [getProduct, setGetproduct] = useState('')
+  const [getdescription, setGetdescription] = useState('')
+  const [geturl, setGeturl] = useState('')
+  const [getprice, setGetprice] = useState('')
   return (
     <Logincontext.Provider
       value={{ 
@@ -43,7 +54,15 @@ const App = () => {
         getuser, setGetuser,
         useropen, setUseropen,
         loading, setLoading,
-        getcartitens, setGetcartitens
+        getcartitens, setGetcartitens,
+        nomeProduto, setNomeProduto,
+        descricaoProduto, setDescricaoProduto,
+        urlImagem, setUrlImagem,
+        precoProduto, setPrecoProduto,
+        getProduct, setGetproduct,
+        getdescription, setGetdescription,
+        geturl, setGeturl,
+        getprice, setGetprice
       }}
     >
       <Router>

@@ -23,14 +23,6 @@ const navigate = useNavigate()
           <h2>Adicionar</h2>
           <CgAddR onClick={() => navigate('/admin/adicionar')} id='add' className='icon' />
         </div>
-        <div className='container_gerenciamento'>
-          <h2>Editar</h2>
-          <MdModeEdit onClick={() => navigate('/admin/editar')} id='edit' className='icon' />
-        </div>
-        <div className='container_gerenciamento'>
-          <h2>Remover</h2>
-          <FaRegTrashAlt onClick={() => navigate('/admin/remover')} id='remove' className='icon' />
-        </div>
       </Gerenciamento>
     </AdminContainer>
   );

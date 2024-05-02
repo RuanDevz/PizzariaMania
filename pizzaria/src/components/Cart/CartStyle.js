@@ -22,4 +22,6 @@ export const Cartt = styled.div`
   right: 0;
   animation: ${slideIn} 0.5s ease forwards;
   border: 1px solid #fafafa;
+  overflow-y: auto;
+
 `;
