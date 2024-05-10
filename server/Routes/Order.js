@@ -48,8 +48,7 @@ router.get('/:id/edit', async (req, res) => {
 });
 
 router.put('/:id', async (req, res) => {
-  const OrdersUpdate = req.body
-  const {Product, Description, Img, Price} = req.body;
+  const OrdersUpdate = req.body;
   const { id } = req.params;
 
   try {
@@ -59,7 +58,7 @@ router.put('/:id', async (req, res) => {
       return res.status(404).json({ msg: "Pedido não encontrado." });
     }
 
-    await order.update(Product, Description, Img, Price); 
+    await order.update(OrdersUpdate); 
 
     res.status(200).json({ msg: "Pedido atualizado", order: OrdersUpdate }); 
   } catch (error) {
