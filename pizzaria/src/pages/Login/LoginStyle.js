@@ -34,6 +34,11 @@ form{
     font-weight: bold;
 }
 
+#link{
+    position: relative;
+    transform: translateY(-610%);
+}
+
 p#error{
 color: red;
 font-size: 1.em;

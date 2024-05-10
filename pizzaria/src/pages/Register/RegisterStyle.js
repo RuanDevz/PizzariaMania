@@ -10,12 +10,13 @@ export const RegisterContainer = styled.div`
 
     #back{
             position: absolute;
-            left: 100px;
+            left: 0px;
             top: 50px;
             font-size: 3em;
             color: #ff5b00;
             cursor: pointer;
 }
+
 
     .front{
         width: 350px;
@@ -31,6 +32,26 @@ export const RegisterContainer = styled.div`
         align-items: center;
         flex-direction: column;
         margin: 20px 0px;
+        gap: 500px;
+
+        img{
+            display: none;
+        }
+
+@media screen and (min-width: 1024px) {
+    margin-right: 800px;
+    form{
+        flex-direction: column;
+    }
+    img{
+            display: flex;
+            position: absolute;
+            top: 0;
+            right: 0;
+            transform: translateX();
+            width: 500px;
+        }
+}
 
         p#error {
             margin-top: 10px;
@@ -47,6 +68,16 @@ export const RegisterContainer = styled.div`
             .front{
                 width: 350px;
             }
+
+            
+        #back{
+            position: absolute;
+            left: 100px;
+            top: 50px;
+            font-size: 3em;
+            color: #ff5b00;
+            cursor: pointer;
+}
             
         }
     }
@@ -81,6 +112,8 @@ export const SucessMessage = styled.div`
 
 export const Containerinputs = styled.div`
 display: flex;
+justify-content: center;
+align-items: center;
 flex-direction: column;
 gap: 80px;
 `

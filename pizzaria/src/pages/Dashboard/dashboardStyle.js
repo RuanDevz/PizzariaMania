@@ -49,6 +49,7 @@ p#price{
 }
 
 @media only screen and (min-width: 1024px){
+  
 justify-content: space-around;
 }
 `
@@ -71,6 +72,28 @@ top: 100px;
 `
 
 export const Product = styled.div`
+
+.Product-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-direction: column;
+      width: 300px;
+      margin: 30px 50px; 
+      padding: 20px 0px;
+      border-radius: 20px;
+      background-color: #f0f0f0;
+      box-shadow: 2px 4px 17px 0px rgba(0, 0, 0, 0.75);
+
+      img{
+        width: 200px;
+      }
+
+      p{
+        padding: 20px 0px;
+      }
+    }
+
   @media only screen and (min-width: 1024px) {
     display: flex;
     justify-content: space-around;

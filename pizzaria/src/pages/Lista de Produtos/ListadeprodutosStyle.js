@@ -66,6 +66,12 @@ p{
 
 }
 
+.containerdivproduct{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .edit{
     display: flex;
     align-items: center;

@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import pizza from '../../pages/Minhaconta/img/PizzaOrder.png';
 import Logincontext from '../../context/Logincontext';
 import './PizzaStyle.css';
+import Button from '../button/Button'
 
 const Pizza = () => {
     const { getcartitens, cartitems } = useContext(Logincontext);
@@ -70,6 +71,9 @@ const Pizza = () => {
             <div className='pay'>
                 <p>A pagar</p>
                 <span>R$ {(value - desconto + taxa)},00</span>
+            </div>
+            <div className='containerbutton'>
+                <Button children='Comprar'/>
             </div>
         </div>
     );

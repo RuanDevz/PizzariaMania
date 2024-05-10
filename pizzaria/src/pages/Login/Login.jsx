@@ -17,32 +17,42 @@ const Login = () => {
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    
+  
     if (username.trim() === '' || password.trim() === '') {
       setError('Preencha os campos corretamente');
       setLoading(false);
       return;
     }
-      const response = await axios.post('https://backendpizzaria.onrender.com/user/auth', { username, password });
-      
-      const accessToken = response.data.accessToken
-      const userData = response.data.user
-
-      setGetuser(userData)
   
-      if (!userData) {
+    try {
+      const response = await axios.post('https://backendpizzaria.onrender.com/user/auth', { username, password });
+  
+      const accessToken = response.data.accessToken;
+      const userData = response.data.user;
+  
+      setGetuser(userData);
+  
+      if (!userData || !accessToken) {
         setError('Usuário não encontrado');
         setLoading(false);
         return;
       }
   
+      localStorage.setItem('accessToken', accessToken);
+      localStorage.setItem('userData', JSON.stringify(userData));
   
       sessionStorage.setItem('accessToken', accessToken);
       sessionStorage.setItem('userData', JSON.stringify(userData));
   
       setError('');
       navigate('/dashboard');
+    } catch (error) {
+      // Aqui você trata os erros que podem ocorrer durante a requisição HTTP
+      setError('Credenciais invalidas');
+      setLoading(false);
+    }
   };
+  
   
   
 
@@ -72,7 +82,7 @@ const Login = () => {
           {error && <p id="error">{error}</p>}
           <Button className="Entrar" children='Entrar' type="submit" />
           <div className="Join">
-            <Link to="/register" className="register">
+            <Link id='link' to="/register" className="register">
               Não possui uma conta?
             </Link>
           </div>

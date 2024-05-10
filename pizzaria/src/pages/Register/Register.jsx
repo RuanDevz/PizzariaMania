@@ -7,6 +7,7 @@ import Correto from '../../assets/Correto.png';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { IoMdArrowRoundBack } from "react-icons/io";
+import pizzaiolo from '../../assets/pizzaiolo.png'
 
 const Register = () => {
   const [username, setUsername] = useState('');
@@ -14,7 +15,7 @@ const Register = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
   const [isRegistered, setIsRegistered] = useState(false);
-  const [isButtonDisabled, setIsButtonDisabled] = useState(false); // Estado do botão
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -76,7 +77,6 @@ const Register = () => {
   return (
     <RegisterContainer>
       <IoMdArrowRoundBack id='back' onClick={() => navigate('/')} />
-      <h1>Cadastrar usuário</h1>
       {isRegistered ? (
         <SucessMessage id='success'>
           <h2>Usuário Cadastrado com Sucesso</h2>
@@ -84,7 +84,9 @@ const Register = () => {
         </SucessMessage>
       ) : (
         <form>
+          
           <Containerinputs>
+          <h1>Cadastrar usuário</h1>
             <Input
               type='text'
               placeholder='Nome'
@@ -111,12 +113,15 @@ const Register = () => {
               htmlFor='confirmPassword'
               id='confirmPassword'
             />
+                  {!isRegistered && (
+        <Button children='Cadastrar' onClick={handleClick} disabled={isButtonDisabled} />
+      )}
           </Containerinputs>
           {error && <p id='error'>{error}</p>}
+          <section className='pizzailo'>
+        <img src={pizzaiolo} alt="pizzaiolo" />
+      </section>
         </form>
-      )}
-      {!isRegistered && (
-        <Button children='Cadastrar' onClick={handleClick} disabled={isButtonDisabled} />
       )}
     </RegisterContainer>
   );
