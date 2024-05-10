@@ -52,15 +52,15 @@ router.put('/:id', async (req, res) => {
   const { id } = req.params;
 
   try {
-    const user = await User.findByPk(id);
+    const order = await Order.findByPk(id);
     
-    if (!user) {
+    if (!order) {
       return res.status(404).json({ msg: "Pedido não encontrado." });
     }
 
-    await user.update(OrdersUpdate); 
+    await order.update(OrdersUpdate); 
 
-    res.status(200).json({ msg: "Pedido atualizado", user: OrdersUpdate }); 
+    res.status(200).json({ msg: "Pedido atualizado", order: OrdersUpdate }); 
   } catch (error) {
     console.error(error);
     res.status(500).json({ msg: "Erro ao atualizar o pedido." });
