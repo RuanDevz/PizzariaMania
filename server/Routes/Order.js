@@ -48,26 +48,26 @@ router.get('/:id/edit', async (req, res) => {
 });
 
 router.put('/:id', async (req, res) => {
+  const OrdersUpdate = req.body;
   const { id } = req.params;
-  const orderData = req.body;
 
-     let existingOrder = await Order.findByPk(id);
-    if (!existingOrder) {
-      return res.status(404).json({ message: "Pedido não foi encontrado" });
+  try {
+    const user = await User.findByPk(id);
+    
+    if (!user) {
+      return res.status(404).json({ msg: "Pedido não encontrado." });
     }
 
-    existingOrder = await existingOrder.update({
-      Product: orderData.nomeProduto,
-      Description: orderData.descricaoProduto,
-      Img: orderData.urlImagem,
-      Price: orderData.precoProduto
-    });
-    
+    await user.update(OrdersUpdate); 
 
-    res.status(200).json({
-      message: "Pedido atualizado com sucesso!", existingOrder
-    });
+    res.status(200).json({ msg: "Pedido atualizado", user: OrdersUpdate }); 
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ msg: "Erro ao atualizar o pedido." });
+  }
 });
+
+
 
 router.delete('/:id', async (req, res) => {
   const { id } = req.params;

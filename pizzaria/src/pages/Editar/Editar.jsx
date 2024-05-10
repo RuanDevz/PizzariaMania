@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { IoMdArrowRoundBack } from "react-icons/io";
 import Logincontext from '../../context/Logincontext';
 
-const Editar = () => {
+const Editar = (id) => {
   const [updated, setUpdated] = useState(false);
   const [error, setError] = useState(false);
 
@@ -32,10 +32,14 @@ const Editar = () => {
       Price: localPrecoProduto
     };
     setUpdated(true);
-
+    
+    try{
       const response = await axios.put(`https://pizzariamania3.onrender.com/order/${id}`, dadosAtualizados);
       console.log(response.data);
-      console.log(dadosAtualizados);
+      console.log(dadosAtualizados)
+    }catch(err){
+      console.log(err)
+    }
   };
 
   useEffect(() => {

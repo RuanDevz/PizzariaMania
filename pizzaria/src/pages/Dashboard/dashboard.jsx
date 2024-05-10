@@ -16,6 +16,7 @@ const Dashboard = () => {
     axios.get("https://pizzariamania3.onrender.com/order").then((response) => {
       setOrder(response.data);
       setLoading(false)
+      console.log(response.data)
     });
   }, []);
 
