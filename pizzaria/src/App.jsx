@@ -40,6 +40,9 @@ const App = () => {
   const [getdescription, setGetdescription] = useState('')
   const [geturl, setGeturl] = useState('')
   const [getprice, setGetprice] = useState('')
+  const [getid, setGetid] = useState()
+  
+
   return (
     <Logincontext.Provider
       value={{ 
@@ -62,7 +65,9 @@ const App = () => {
         getProduct, setGetproduct,
         getdescription, setGetdescription,
         geturl, setGeturl,
-        getprice, setGetprice
+        getprice, setGetprice,
+        getid, setGetid
+        
       }}
     >
       <Router>

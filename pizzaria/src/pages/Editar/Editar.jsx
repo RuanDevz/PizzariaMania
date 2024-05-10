@@ -7,36 +7,37 @@ import { useNavigate } from 'react-router-dom';
 import { IoMdArrowRoundBack } from "react-icons/io";
 import Logincontext from '../../context/Logincontext';
 
-const Editar = (id) => {
+const Editar = () => {
   const [updated, setUpdated] = useState(false);
   const [error, setError] = useState(false);
 
   const {
-    getProduct, getdescription, geturl, getprice
+    getProduct, getdescription, geturl, getprice,getid
   } = useContext(Logincontext);
 
+  const [id] = useState(getid)
   const [localNomeProduto, setLocalNomeProduto] = useState(getProduct);
   const [localDescricaoProduto, setLocalDescricaoProduto] = useState(getdescription);
   const [localUrlImagem, setLocalUrlImagem] = useState(geturl);
   const [localPrecoProduto, setLocalPrecoProduto] = useState(getprice);
 
+
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const dadosAtualizados = {
-      Product: localNomeProduto,
-      Description: localDescricaoProduto,
-      Img: localUrlImagem,
-      Price: localPrecoProduto
-    };
     setUpdated(true);
     
+    
     try{
-      const response = await axios.put(`https://pizzariamania3.onrender.com/order/${id}`, dadosAtualizados);
+      const response = await axios.put(`https://pizzariamania3.onrender.com/order/${id}`,{
+        Product: localNomeProduto,
+        Description: localDescricaoProduto,
+        Img: localUrlImagem,
+        Price: localPrecoProduto
+      });
       console.log(response.data);
-      console.log(dadosAtualizados)
+      
     }catch(err){
       console.log(err)
     }

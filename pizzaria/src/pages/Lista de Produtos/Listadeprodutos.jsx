@@ -14,10 +14,11 @@ const Listadeprodutos = () => {
   const navigate = useNavigate();
 
 
+
   const {nomeProduto, setGetproduct,
     descricaoProduto, setGetdescription,
     urlImagem, setGeturl,
-    precoProduto, setGetprice,getProduct,getdescription,geturl,getprice} = useContext(Logincontext)
+    precoProduto, setGetprice,setGetid,getid} = useContext(Logincontext)
 
   useEffect(() => {
     setLoading(true);
@@ -51,17 +52,13 @@ const Listadeprodutos = () => {
     };
   
       const response = await axios.get(`https://pizzariamania3.onrender.com/order/${productId}`, dadosAtualizados);
-      console.table(response.data)
+
       setGetproduct(response.data.existingProduct.Product)
       setGetdescription(response.data.existingProduct.Description)
       setGeturl(response.data.existingProduct.Img)
       setGetprice(response.data.existingProduct.Price)
+      setGetid(response.data.existingProduct.id)
       navigate('/admin/editar')
-
-      console.log(getProduct)
-      console.log(getdescription)
-      console.log(geturl)
-      console.log(getprice)
   };
 
 
